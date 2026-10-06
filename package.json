@@ -1,0 +1,15 @@
+{
+  "name": "medicalva",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Buildless medical VA learning hub with 48 English and Taglish lessons",
+  "scripts": {
+    "dev": "node scripts/serve.cjs",
+    "test": "node tests/learning.cjs && node tests/security.cjs",
+    "format": "prettier --write site scripts tests README.md SECURITY.md .github package.json",
+    "format:check": "prettier --check site scripts tests README.md SECURITY.md .github package.json"
+  },
+  "devDependencies": {
+    "prettier": "3.6.2"
+  }
+}

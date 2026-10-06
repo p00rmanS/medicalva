@@ -1,0 +1,17 @@
+# Local credentials and machine state are never published.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials*.json
+.openai/
+.npm-cache/
+node_modules/
+*.log
+# Original Sites checkout and deployment packages stay local.
+hub/
+package-stage*/
+*.tar.gz
+taglish-preview.png
+preview*.png

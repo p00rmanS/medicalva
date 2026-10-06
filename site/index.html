@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="referrer" content="no-referrer" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <title>First Steps | Medical VA Training</title>
+    <meta
+      name="description"
+      content="Start learning medical virtual assistant skills with beginner lessons, realistic practice and knowledge checks."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23205d50'/%3E%3Cpath d='M8 16h16M16 8v16' stroke='white' stroke-width='4'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="base.css" />
+    <link rel="stylesheet" href="usability.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to lessons</a>
+    <div class="shell">
+      <aside>
+        <div class="brand"><span class="mark">+</span>First Steps</div>
+        <div class="small brand-subtitle">MEDICAL VA LEARNING HUB</div>
+        <div class="label">Your learning space</div>
+        <button class="mobile-overview secondary" data-action="home">
+          All lessons</button
+        ><label class="mobile-picker" for="lessonSelect"
+          >Jump to a lesson<select
+            aria-label="Jump to a lesson"
+            id="lessonSelect"
+          ></select
+        ></label>
+        <nav id="nav" aria-label="Learning navigation"></nav>
+        <div class="side-note">
+          <b>Starting from zero?</b>
+          <p>
+            You're in the right place. Learn one skill, try it, then move to the
+            next.
+          </p>
+          <span class="small">No medical background required.</span>
+        </div>
+      </aside>
+      <main id="main">
+        <div class="top">
+          <span>Your path to medical admin skills</span
+          ><span class="badge">English + Taglish · U.S. practices</span>
+        </div>
+        <div id="home">
+          <div class="intro">
+            <div class="label intro-label">Start with zero experience</div>
+            <h1 id="overviewTitle" tabindex="-1">
+              Your medical VA learning path
+            </h1>
+            <p>
+              Read a short lesson, practice the task, then check your
+              understanding. Every lesson has English guidance, a Taglish
+              explanation, and a practical pro tip. Start with Foundations or
+              choose a topic below.
+            </p>
+          </div>
+          <section class="resume">
+            <div>
+              <h2>One lesson at a time</h2>
+              <p id="continueDetail"></p>
+              <button class="primary" id="continue" data-action="continue">
+                Continue learning
+              </button>
+            </div>
+            <div class="progress-box">
+              <label id="progressText" for="progress"></label
+              ><progress id="progress" max="48" value="0"></progress>
+              <p class="small" id="storageNote"></p>
+            </div>
+          </section>
+          <div class="search-box">
+            <label for="search">Find a lesson</label
+            ><input
+              id="search"
+              type="search"
+              placeholder="Try scheduling, privacy, or video visits"
+            />
+            <p class="small" id="searchStatus" role="status"></p>
+          </div>
+          <div id="empty" class="week hidden">
+            <h2>No matching lessons</h2>
+            <p>Try a shorter word or return to the full learning path.</p>
+            <button class="secondary" data-action="clear-search">
+              Show all lessons
+            </button>
+          </div>
+          <div id="cards"></div>
+          <section class="week">
+            <b>A flexible learning routine</b>
+            <p>
+              Start with Foundations. Move to Patient support, then Office
+              workflows. Then build your scheduling, billing support, clinical
+              team support, and communication skills. Build a portfolio, then
+              use the comprehensive workshops to practice full workflows and
+              review your decisions.
+            </p>
+            <span class="small"
+              >Spend 20–30 minutes per session. Do the independent exercises,
+              repeat each script aloud, and review your work before moving on.
+              Finishing a lesson records study progress, not professional
+              competence.</span
+            >
+          </section>
+        </div>
+        <article id="lesson" class="lesson hidden"></article>
+        <footer class="sources">
+          Practice with fictional information only. This introductory hub is not
+          a certification or employer onboarding.<br />Reference reading:
+          <a
+            href="https://www.hhs.gov/hipaa/for-professionals/privacy/guidance/minimum-necessary-requirement/index.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            >HHS privacy guidance ↗</a
+          ><a
+            href="https://playbook.healthit.gov/playbook/electronic-health-records/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >HealthIT EHR basics ↗</a
+          >
+        </footer>
+      </main>
+    </div>
+    <script src="more-lessons.js"></script>
+    <script src="app.js"></script>
+    <script src="pro-lessons.js"></script>
+    <script src="client-lessons.js"></script>
+    <script src="mentor-notes.js"></script>
+    <script src="workshops.js"></script>
+    <script src="learning.js"></script>
+    <script src="quick-nav.js"></script>
+  </body>
+</html>
