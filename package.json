@@ -2,7 +2,7 @@
   "name": "medicalva",
   "version": "1.0.0",
   "private": true,
-  "description": "Buildless medical VA learning hub with 48 English and Taglish lessons",
+  "description": "Buildless medical VA learning hub with 54 English and Taglish lessons",
   "scripts": {
     "dev": "node scripts/serve.cjs",
     "test": "node tests/learning.cjs && node tests/security.cjs",

@@ -42,15 +42,16 @@ for (const name of [
   "client-lessons.js",
   "mentor-notes.js",
   "workshops.js",
+  "advanced-lessons.js",
   "learning.js",
 ])
   vm.runInContext(
     fs.readFileSync(require("path").join(__dirname, "../site", name), "utf8"),
     context,
   );
-assert.equal(vm.runInContext("lessons.length", context), 48);
-assert.equal(new Set(vm.runInContext("order", context)).size, 48);
-for (let n = 1; n <= 48; n++) {
+assert.equal(vm.runInContext("lessons.length", context), 54);
+assert.equal(new Set(vm.runInContext("order", context)).size, 54);
+for (let n = 1; n <= 54; n++) {
   const r = tool.execute({ lesson: n });
   assert(el("lesson").innerHTML.includes(r.title));
   assert(el("lesson").innerHTML.includes("Taglish explanation"));
@@ -70,7 +71,7 @@ for (let n = 1; n <= 48; n++) {
   assert(el("feedback").textContent.startsWith("Correct."));
   assert.equal(el("complete").textContent, "Completed");
 }
-assert.equal(JSON.parse(stored).completed.length, 48);
+assert.equal(JSON.parse(stored).completed.length, 54);
 assert.throws(() => tool.execute({ lesson: 0 }));
 el("search").value = "video";
 vm.runInContext("renderCards()", context);
@@ -79,7 +80,7 @@ el("search").value = "zzzz";
 vm.runInContext("renderCards()", context);
 assert.equal(el("cards").innerHTML, "");
 console.log(
-  "Verified 48 lesson flows, wrong/correct answers, completion, saved state, search, empty results, and invalid input.",
+  "Verified 54 lesson flows, wrong/correct answers, completion, saved state, search, empty results, and invalid input.",
 );
 
 assert(
@@ -90,4 +91,14 @@ assert(
 );
 console.log(
   "All 8 workshops include objectives, multi-step workflows, model responses, assignments, and review rubrics.",
+);
+assert(
+  vm.runInContext(
+    'advancedLessons.length === 6 && advancedLessons.every(l => l.objectives.length >= 3 && l.steps.length >= 5 && l.drills.length >= 3 && l.rubric.length >= 4 && l.body.includes("model response"))',
+    context,
+  ),
+);
+assert.equal(vm.runInContext("order[48]", context), 48);
+console.log(
+  "All 6 new lessons include full workflows and assignments; existing lesson order is preserved.",
 );

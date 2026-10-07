@@ -1,6 +1,6 @@
 # Medical VA First Steps
 
-A beginner training hub with 48 lessons, English and Taglish explanations, pro tips, practice questions, and eight comprehensive workshops. Progress stays in the learner's browser. Lesson completion records study progress; it is not certification or proof of professional competence.
+A beginner training hub with 54 lessons, English and Taglish explanations, pro tips, practice questions, and eight comprehensive workshops. Progress stays in the learner's browser. Lesson completion records study progress; it is not certification or proof of professional competence.
 
 ## Run locally
 
@@ -23,7 +23,7 @@ npm run format:check
 ## Source guide
 
 - `site/index.html`, `base.css`, and `usability.css`: layout and responsive styling.
-- `site/app.js`, `more-lessons.js`, `pro-lessons.js`, `client-lessons.js`, and `workshops.js`: curriculum.
+- `site/app.js`, `more-lessons.js`, `pro-lessons.js`, `client-lessons.js`, `workshops.js`, and `advanced-lessons.js`: curriculum.
 - `site/mentor-notes.js`: Taglish explanations and mentor tips.
 - `site/learning.js`: rendering, search, practice checks, and browser-local progress.
 - `site/quick-nav.js`: sticky Previous/Next controls and left/right keyboard shortcuts.

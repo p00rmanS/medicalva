@@ -52,6 +52,7 @@ function boot(saved) {
     "client-lessons.js",
     "mentor-notes.js",
     "workshops.js",
+    "advanced-lessons.js",
     "learning.js",
     "quick-nav.js",
   ]) {
@@ -67,16 +68,21 @@ function boot(saved) {
 for (const saved of [
   "null",
   "invalid json",
-  '{"completed":[-1,0,0,48,"1"],"last":999}',
+  '{"completed":[-1,0,0,54,"1"],"last":999}',
 ]) {
   const app = boot(saved);
   assert(app.run("completed.size <= 1 && last === 0"));
   app.run("openLesson(order[0]);moveLesson(-1)");
   assert.equal(app.run("current"), -1);
-  app.run("openLesson(order[47]);moveLesson(1)");
+  app.run("openLesson(order[order.length - 1]);moveLesson(1)");
   assert.equal(app.run("current"), -1);
 }
 const app = boot("{}");
+const returningLearner = boot('{"completed":[0,40,47],"last":47}');
+assert.equal(returningLearner.run("completed.size"), 3);
+assert.equal(returningLearner.run("last"), 47);
+returningLearner.run("openLesson(47);moveLesson(1)");
+assert.equal(returningLearner.run("current"), 48);
 app.run("openLesson(0);completeLesson()");
 assert.equal(app.run("completed.size"), 0);
 const click = (dataset) =>

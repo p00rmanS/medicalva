@@ -3,6 +3,7 @@ lessons.push(
   ...professionalLessons,
   ...clientLessons,
   ...workshopLessons,
+  ...advancedLessons,
 );
 applyMentorNotes(lessons);
 const groups = [
@@ -58,6 +59,11 @@ groups.push({
   title: "Comprehensive practice workshops",
   note: "Work through detailed cases, compare your outputs, and revise with a mentor checklist.",
   ids: [40, 41, 42, 43, 44, 45, 46, 47],
+});
+groups.push({
+  title: "Reliable operations and client onboarding",
+  note: "Practice record accuracy, safe routing, schedule recovery, trackers, incident reporting, and a reviewed client workflow.",
+  ids: [48, 49, 50, 51, 52, 53],
 });
 const order = groups.flatMap((g) => g.ids);
 let current = -1,
