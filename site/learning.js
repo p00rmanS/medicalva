@@ -1,76 +1,160 @@
+// Course catalog, lesson player, progress, and preferences.
 lessons.push(
   ...additionalLessons,
   ...professionalLessons,
   ...clientLessons,
   ...workshopLessons,
   ...advancedLessons,
+  ...codingLessons,
 );
+lessons.forEach((l, i) => {
+  if (!l.remember && rememberNotes[i]) l.remember = rememberNotes[i];
+});
 applyMentorNotes(lessons);
-const groups = [
+// Rotate answer positions so the right choice is not always in the same slot.
+lessons.forEach((l, i) => {
+  const n = l.answers.length,
+    shift = i % n;
+  l.answers = l.answers.map((_, k) => l.answers[(k - shift + n) % n]);
+  l.correct = (l.correct + shift) % n;
+});
+
+const courses = [
   {
-    title: "Foundations",
-    note: "Understand your role and protect information.",
-    ids: [0, 1, 2, 8],
+    id: "foundations",
+    title: "Medical VA Foundations",
+    level: "Beginner",
+    summary:
+      "Answer calls, schedule safely, protect patient information, and work reliably with U.S. clients. No medical background needed.",
+    sections: [
+      {
+        title: "Foundations",
+        note: "Understand your role and protect information.",
+        ids: [0, 1, 2, 8],
+      },
+      {
+        title: "Patient support",
+        note: "Practice the everyday patient-facing tasks.",
+        ids: [3, 4, 9, 10, 13],
+      },
+      {
+        title: "Office workflows",
+        note: "Keep records, requests, and handoffs organized.",
+        ids: [5, 6, 11, 12, 14],
+      },
+      {
+        title: "Put it into practice",
+        note: "Prepare honest work samples and complete a practice shift.",
+        ids: [7, 15],
+      },
+      {
+        title: "Scheduling and billing support",
+        note: "Build reliable workflows for a busy practice.",
+        ids: [16, 17, 18, 19, 20],
+      },
+      {
+        title: "Clinical team support",
+        note: "Capture requests accurately and stay within your role.",
+        ids: [21, 22, 23],
+      },
+      {
+        title: "Professional communication and tools",
+        note: "Build trust and use approved tools carefully.",
+        ids: [24, 25, 26, 27],
+      },
+      {
+        title: "Excellence through practice",
+        note: "Review quality, create useful procedures, and demonstrate your skills.",
+        ids: [28, 29, 30, 31],
+      },
+      {
+        title: "Client expectations and career growth",
+        note: "Work with clear expectations, reliable updates, and honest evidence.",
+        ids: [32, 33, 34, 35, 36, 37, 38, 39],
+      },
+      {
+        title: "Comprehensive practice workshops",
+        note: "Work through detailed cases, compare your outputs, and revise with a mentor checklist.",
+        ids: [40, 41, 42, 43, 44, 45, 46, 47],
+      },
+      {
+        title: "Reliable operations and client onboarding",
+        note: "Practice record accuracy, safe routing, schedule recovery, trackers, incident reporting, and a reviewed client workflow.",
+        ids: [48, 49, 50, 51, 52, 53],
+      },
+      {
+        title: "Practice operations and remote skills",
+        note: "Verify coverage, support credentialing, answer billing calls, learn medication vocabulary, and work efficiently from home.",
+        ids: [103, 104, 105, 106, 107, 108],
+      },
+    ],
   },
   {
-    title: "Patient support",
-    note: "Practice the everyday patient-facing tasks.",
-    ids: [3, 4, 9, 10, 13],
-  },
-  {
-    title: "Office workflows",
-    note: "Keep records, requests, and handoffs organized.",
-    ids: [5, 6, 11, 12, 14],
-  },
-  {
-    title: "Put it into practice",
-    note: "Prepare honest work samples and complete a practice shift.",
-    ids: [7, 15],
+    id: "coding",
+    title: "Medical Coding and Billing Career Track",
+    level: "Beginner to intermediate",
+    summary:
+      "ICD-10-CM, CPT, HCPCS, modifiers, claims, denials, compliance, and a roadmap to professional certification and coder VA work.",
+    sections: [
+      {
+        title: "Coding foundations",
+        note: "Understand the job, the revenue cycle, medical language, and how to read a chart.",
+        ids: [54, 55, 56, 57, 58, 59],
+      },
+      {
+        title: "ICD-10-CM diagnosis coding",
+        note: "Assign accurate diagnosis codes using the Index, the Tabular List, and the Official Guidelines.",
+        ids: [60, 61, 62, 63, 64],
+      },
+      {
+        title: "CPT and HCPCS procedure coding",
+        note: "Code visits, procedures, drugs, and services, then combine them into a clean encounter.",
+        ids: [65, 66, 67, 68, 69, 70, 71, 72, 73],
+      },
+      {
+        title: "Specialty coding",
+        note: "Apply the rules to hospital, skin, orthopedic, behavioral health, obstetric, and anesthesia services, and read an operative report.",
+        ids: [90, 91, 92, 93, 94, 95, 96],
+      },
+      {
+        title: "Claims, payers, and denials",
+        note: "Follow a claim to payment, read remittances, work denials, and bill patients clearly.",
+        ids: [74, 75, 76, 77, 78, 79, 80, 97],
+      },
+      {
+        title: "Compliance, risk, and quality",
+        note: "Code honestly, understand risk adjustment, measure accuracy, and report quality data.",
+        ids: [81, 82, 83, 98],
+      },
+      {
+        title: "Exam practice sets",
+        note: "Timed practice with answers and reasoning for diagnosis coding, procedure coding, and the back end of the claim.",
+        ids: [99, 100, 101],
+      },
+      {
+        title: "Tools, security, and career launch",
+        note: "Work securely, choose a credential, package your services, prepare for interviews, and finish with a capstone.",
+        ids: [84, 85, 86, 87, 88, 102, 89],
+      },
+    ],
   },
 ];
-groups.push(
-  {
-    title: "Scheduling and billing support",
-    note: "Build reliable workflows for a busy practice.",
-    ids: [16, 17, 18, 19, 20],
-  },
-  {
-    title: "Clinical team support",
-    note: "Capture requests accurately and stay within your role.",
-    ids: [21, 22, 23],
-  },
-  {
-    title: "Professional communication and tools",
-    note: "Build trust and use approved tools carefully.",
-    ids: [24, 25, 26, 27],
-  },
-  {
-    title: "Excellence through practice",
-    note: "Review quality, create useful procedures, and demonstrate your skills.",
-    ids: [28, 29, 30, 31],
-  },
+const groups = courses.flatMap((c) =>
+  c.sections.map((s) => ({ ...s, course: c.id })),
 );
-groups.push({
-  title: "Client expectations and career growth",
-  note: "Work with clear expectations, reliable updates, and honest evidence.",
-  ids: [32, 33, 34, 35, 36, 37, 38, 39],
-});
-groups.push({
-  title: "Comprehensive practice workshops",
-  note: "Work through detailed cases, compare your outputs, and revise with a mentor checklist.",
-  ids: [40, 41, 42, 43, 44, 45, 46, 47],
-});
-groups.push({
-  title: "Reliable operations and client onboarding",
-  note: "Practice record accuracy, safe routing, schedule recovery, trackers, incident reporting, and a reviewed client workflow.",
-  ids: [48, 49, 50, 51, 52, 53],
-});
 const order = groups.flatMap((g) => g.ids);
+const courseById = (id) => courses.find((c) => c.id === id) || courses[0];
+const groupIndexOf = (i) => groups.findIndex((g) => g.ids.includes(i));
+const courseOf = (i) => courseById(groups[groupIndexOf(i)].course);
+
 let current = -1,
   passed = false,
   completed = new Set(),
   last = 0,
-  storageAvailable = true;
+  storageAvailable = true,
+  view = "home",
+  ui = { theme: "auto", drawer: null, open: {}, course: "foundations" },
+  suppressHash = false;
 try {
   const saved =
     JSON.parse(localStorage.getItem("medical-va-learning-v1") || "{}") || {};
@@ -88,6 +172,18 @@ try {
 } catch {
   storageAvailable = false;
 }
+try {
+  const prefs = JSON.parse(localStorage.getItem("medical-va-ui-v1") || "{}");
+  if (prefs && typeof prefs === "object") {
+    if (["auto", "light", "dark"].includes(prefs.theme)) ui.theme = prefs.theme;
+    if (typeof prefs.drawer === "boolean") ui.drawer = prefs.drawer;
+    if (courses.some((c) => c.id === prefs.course)) ui.course = prefs.course;
+    if (prefs.open && typeof prefs.open === "object")
+      for (const [k, v] of Object.entries(prefs.open))
+        if (/^\d+$/.test(k) && typeof v === "boolean") ui.open[k] = v;
+  }
+} catch {}
+
 const $ = (id) => document.getElementById(id);
 const escapeText = (s) =>
   String(s).replace(
@@ -97,6 +193,49 @@ const escapeText = (s) =>
         c
       ],
   );
+const minutesOf = (i) => parseInt(lessons[i].time, 10) || 0;
+function formatMinutes(total) {
+  const h = Math.floor(total / 60),
+    m = total % 60;
+  if (!h) return `${m} min`;
+  return m ? `${h} hr ${m} min` : `${h} hr`;
+}
+const ICONS = {
+  chevron: "M6 9l6 6 6-6",
+  check: "M5 12.5l4.5 4.5L19 7.5",
+  list: "M4 6h16M4 12h16M4 18h10",
+  keys: "M3 6h18v12H3zM7 10h.01M11 10h.01M15 10h.01M7 14h10",
+  sun: "M12 8a4 4 0 100 8 4 4 0 000-8zM12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4",
+  moon: "M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z",
+  left: "M19 12H5M11 6l-6 6 6 6",
+  right: "M5 12h14M13 6l6 6-6 6",
+  search: "M11 4a7 7 0 100 14 7 7 0 000-14zM21 21l-4.3-4.3",
+  close: "M6 6l12 12M18 6L6 18",
+};
+const icon = (name) =>
+  `<svg class="i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="${ICONS[name]}"/></svg>`;
+const pct = (done, total) => (total ? Math.round((done / total) * 100) : 0);
+function courseStats(course) {
+  const ids = course.sections.flatMap((s) => s.ids);
+  const done = ids.filter((i) => completed.has(i)).length;
+  return {
+    ids,
+    done,
+    total: ids.length,
+    minutes: ids.reduce((sum, i) => sum + minutesOf(i), 0),
+    pct: pct(done, ids.length),
+  };
+}
+function paint() {
+  document.querySelectorAll("[data-pct]").forEach((el) => {
+    el.style.setProperty("--p", el.dataset.pct);
+  });
+}
+function saveUi() {
+  try {
+    localStorage.setItem("medical-va-ui-v1", JSON.stringify(ui));
+  } catch {}
+}
 function save() {
   try {
     localStorage.setItem(
@@ -108,133 +247,331 @@ function save() {
   }
   updateProgress();
 }
-function updateProgress() {
-  const count = completed.size;
-  $("progressText").textContent =
-    `${count} of ${lessons.length} lessons completed`;
-  $("progress").value = count;
-  $("progress").max = lessons.length;
+
+// ---- Routing -------------------------------------------------------------
+function setHash(hash) {
+  if (typeof location === "undefined" || location.hash === hash) return;
+  suppressHash = true;
+  location.hash = hash;
+}
+function route(initial = false) {
+  const hash = typeof location === "undefined" ? "" : location.hash;
+  const [, kind, arg] = hash.match(/^#\/([a-z]*)\/?([\w-]*)/) || [];
+  if (kind === "lesson") {
+    const n = Number(arg);
+    if (Number.isInteger(n) && n >= 1 && n <= lessons.length)
+      return openLesson(n - 1, false);
+  }
+  if (kind === "reference" && typeof showReference === "function")
+    return showReference(arg, false);
+  if (kind === "flashcards" && typeof showFlashcards === "function")
+    return showFlashcards(false);
+  if (kind === "course" && courses.some((c) => c.id === arg)) {
+    ui.course = arg;
+    saveUi();
+  }
+  showHome(false, kind === "course", !initial);
+}
+
+// ---- Shared pieces ---------------------------------------------------------
+function rowHtml(i, currentId) {
+  const l = lessons[i],
+    done = completed.has(i),
+    isCurrent = i === currentId;
+  return `<li><button class="row${done ? " done" : ""}${isCurrent ? " current" : ""}" data-action="lesson" data-open="${i}"${i === current ? ' aria-current="true"' : ""}><span class="row-state" aria-hidden="true">${done ? icon("check") : ""}</span><span class="row-main"><span class="row-num">${order.indexOf(i) + 1}</span><span class="row-title">${escapeText(l.title)}</span></span><span class="row-time">${escapeText(l.time)}</span>${done ? '<span class="sr-only">Completed</span>' : ""}</button></li>`;
+}
+function isSectionOpen(gi, focusId) {
+  if (ui.open[gi] !== undefined) return ui.open[gi];
+  return groups[gi].ids.includes(focusId);
+}
+function sectionHtml(gi, ids, opts) {
+  const g = groups[gi],
+    done = g.ids.filter((i) => completed.has(i)).length,
+    minutes = g.ids.reduce((sum, i) => sum + minutesOf(i), 0),
+    open = opts.forceOpen || isSectionOpen(gi, opts.focusId);
+  return `<section class="section${opts.compact ? " compact" : ""}">
+<h3><button class="section-toggle" data-action="toggle-section" data-section="${gi}" aria-expanded="${open}" aria-controls="${opts.prefix}${gi}"><span class="chev">${icon("chevron")}</span><span class="section-title">${escapeText(g.title)}</span><span class="section-meta">${done}/${g.ids.length} · ${formatMinutes(minutes)}</span></button></h3>
+<div class="section-body" id="${opts.prefix}${gi}" data-body="${gi}"${open ? "" : " hidden"}>${opts.compact ? "" : `<p class="group-note">${escapeText(g.note)}</p>`}<ol class="rows">${ids.map((i) => rowHtml(i, opts.currentId)).join("")}</ol></div>
+</section>`;
+}
+
+// ---- Home ------------------------------------------------------------------
+function renderCourseCards() {
+  $("courseCards").innerHTML = courses
+    .map((c, n) => {
+      const s = courseStats(c),
+        active = ui.course === c.id;
+      return `<article class="course${active ? " active" : ""}">
+<p class="course-index">Course ${String(n + 1).padStart(2, "0")} · ${escapeText(c.level)}</p>
+<h3>${escapeText(c.title)}</h3>
+<p>${escapeText(c.summary)}</p>
+<ul class="facts"><li>${s.total} lessons</li><li>${formatMinutes(s.minutes)}</li><li>${c.sections.length} sections</li></ul>
+<div class="meter" role="img" aria-label="${s.pct}% complete"><span data-pct="${s.pct}"></span></div>
+<p class="small">${s.done} of ${s.total} complete</p>
+<button class="${active ? "secondary" : "primary"}" data-action="course" data-course="${c.id}">${s.done ? "Open course" : "Start course"}</button>
+</article>`;
+    })
+    .join("");
+}
+function renderHero() {
+  const total = lessons.length,
+    count = completed.size,
+    next = lessons[last];
+  $("progressText").textContent = `${count} of ${total} lessons completed`;
+  $("heroRing").dataset.pct = String(pct(count, total));
+  $("heroRingValue").textContent = `${pct(count, total)}%`;
   $("storageNote").textContent = storageAvailable
     ? "Progress is saved in this browser on this device."
     : "Progress is available for this visit; browser storage is unavailable.";
   $("continue").textContent =
-    count === lessons.length ? "Review your lessons" : "Continue learning";
+    count === total
+      ? "Review your lessons"
+      : count
+        ? "Continue learning"
+        : "Start learning";
   $("continueDetail").textContent =
-    `${completed.has(last) ? "Review" : "Up next"}: ${lessons[last].title}`;
+    `${completed.has(last) ? "Review" : "Up next"}: ${next.title}`;
+  $("continueMeta").textContent =
+    `${courseOf(last).title} · ${groups[groupIndexOf(last)].title}`;
+  $("courseProgress").innerHTML = courses
+    .map((c) => {
+      const s = courseStats(c);
+      return `<li><span>${escapeText(c.title)}</span><b>${s.done}/${s.total}</b></li>`;
+    })
+    .join("");
+}
+function updateProgress() {
+  renderHero();
+  renderCourseCards();
   renderCards();
+  renderDrawer();
+  updateQuickNav();
+  paint();
 }
 function renderCards() {
   const query = $("search").value.trim().toLowerCase();
-  let found = 0;
-  $("cards").innerHTML = groups
-    .map((g) => {
-      const ids = g.ids.filter((i) =>
-        `${escapeText(lessons[i].title)} ${lessons[i].desc} ${lessons[i].taglish} ${escapeText(g.title)}`
-          .toLowerCase()
-          .includes(query),
-      );
-      found += ids.length;
-      return ids.length
-        ? `<section class="lesson-group">
-<h2>${escapeText(g.title)}</h2>
-<p class="group-note">${escapeText(g.note)}</p>
-<div class="grid">${ids
-            .map((i) => {
-              const l = lessons[i];
-              return `<button class="card" data-action="lesson" data-open="${i}"><span class="num">LESSON ${String(order.indexOf(i) + 1).padStart(2, "0")} <span class="status">${completed.has(i) ? "Completed" : "To learn"}</span></span><h3>${escapeText(l.title)}</h3><p>${escapeText(l.desc)}</p><footer>${escapeText(l.time)} · English + Taglish</footer></button>`;
+  const course = courseById(ui.course);
+  let found = 0,
+    html;
+  if (query) {
+    html = groups
+      .map((g, gi) => {
+        const ids = g.ids.filter((i) =>
+          `${lessons[i].title} ${lessons[i].desc} ${lessons[i].taglish} ${lessons[i].proTip} ${g.title} ${courseById(g.course).title}`
+            .toLowerCase()
+            .includes(query),
+        );
+        found += ids.length;
+        return ids.length
+          ? sectionHtml(gi, ids, {
+              forceOpen: true,
+              prefix: "home-sec-",
+              currentId: last,
             })
-            .join("")}</div>
-</section>`
-        : "";
-    })
-    .join("");
+          : "";
+      })
+      .join("");
+    $("curriculumTitle").textContent = "Search results";
+    $("curriculumTools").classList.add("hidden");
+  } else {
+    html = groups
+      .map((g, gi) =>
+        g.course === course.id
+          ? sectionHtml(gi, g.ids, {
+              prefix: "home-sec-",
+              focusId: last,
+              currentId: last,
+            })
+          : "",
+      )
+      .join("");
+    $("curriculumTitle").textContent = course.title;
+    $("curriculumTools").classList.remove("hidden");
+    const s = courseStats(course);
+    $("curriculumMeta").textContent =
+      `${course.sections.length} sections · ${s.total} lessons · ${formatMinutes(s.minutes)} total`;
+  }
+  $("cards").innerHTML = html;
   $("searchStatus").textContent = query
     ? `${found} matching lesson${found === 1 ? "" : "s"}`
     : "";
-  $("empty").classList.toggle("hidden", found > 0);
+  $("empty").classList.toggle("hidden", !query || found > 0);
+  paint();
 }
 function clearSearch() {
   $("search").value = "";
   renderCards();
   $("search").focus();
 }
-function renderNav() {
-  $("nav").innerHTML =
-    '<button class="nav active" data-action="home">All lessons</button>' +
-    groups
-      .map(
-        (g, n) =>
-          `<div class="nav-group">${escapeText(g.title)}</div>${g.ids.map((i) => `<button class="nav" data-lesson="${i}" data-action="lesson" data-open="${i}">${order.indexOf(i) + 1}. ${escapeText(lessons[i].title)}</button>`).join("")}`,
-      )
-      .join("");
-  $("lessonSelect").innerHTML =
-    '<option value="">Choose a lesson</option>' +
-    groups
-      .map(
-        (g) =>
-          `<optgroup label="${escapeText(g.title)}">${g.ids.map((i) => `<option value="${i}">${order.indexOf(i) + 1}. ${escapeText(lessons[i].title)}</option>`).join("")}</optgroup>`,
-      )
-      .join("");
+
+// ---- Course content drawer (Udemy / Coursera style) -------------------------
+function drawerCourse() {
+  return current >= 0 ? courseOf(current) : courseById(ui.course);
 }
-function highlight() {
-  document.querySelectorAll(".nav").forEach((x) => {
-    const active =
-      current < 0
-        ? !x.hasAttribute("data-lesson")
-        : Number(x.dataset.lesson) === current && x.hasAttribute("data-lesson");
-    x.classList.toggle("active", active);
-    if (active) x.setAttribute("aria-current", "page");
-    else x.removeAttribute("aria-current");
+function renderDrawer() {
+  if (current < 0) return;
+  const course = drawerCourse(),
+    s = courseStats(course);
+  $("drawerTitle").textContent = course.title;
+  $("drawerProgress").textContent =
+    `${s.done} of ${s.total} complete · ${s.pct}%`;
+  $("drawerMeter").dataset.pct = String(s.pct);
+  $("drawerList").innerHTML = groups
+    .map((g, gi) =>
+      g.course === course.id
+        ? sectionHtml(gi, g.ids, {
+            compact: true,
+            prefix: "drawer-sec-",
+            focusId: current,
+            currentId: current,
+          })
+        : "",
+    )
+    .join("");
+  paint();
+}
+function setSectionOpen(gi, open) {
+  ui.open[gi] = open;
+  document.querySelectorAll(`[data-section="${gi}"]`).forEach((b) => {
+    b.setAttribute("aria-expanded", String(open));
   });
-  $("lessonSelect").value = current < 0 ? "" : String(current);
+  document.querySelectorAll(`[data-body="${gi}"]`).forEach((b) => {
+    if (open) b.removeAttribute("hidden");
+    else b.setAttribute("hidden", "");
+  });
 }
-function showHome() {
-  current = -1;
-  $("home").classList.remove("hidden");
-  $("lesson").classList.add("hidden");
-  updateProgress();
-  highlight();
-  window.scrollTo(0, 0);
-  $("overviewTitle").focus({ preventScroll: true });
+function toggleSection(gi, control) {
+  if (!Number.isInteger(gi) || gi < 0 || gi >= groups.length) return;
+  const open = control?.getAttribute
+    ? control.getAttribute("aria-expanded") !== "true"
+    : !isSectionOpen(gi, current >= 0 ? current : last);
+  setSectionOpen(gi, open);
+  saveUi();
+}
+function setAllSections(open) {
+  const course = drawerCourse();
+  groups.forEach((g, gi) => {
+    if (g.course === course.id) setSectionOpen(gi, open);
+  });
+  saveUi();
+}
+function applyChrome() {
+  const lessonView = view === "lesson";
+  const drawerOn = lessonView && ui.drawer !== false;
+  document.body.classList.toggle("drawer-open", drawerOn);
+  document.body.classList.toggle("view-lesson", lessonView);
+  $("drawer").classList.toggle("hidden", !lessonView);
+  $("toggleContent").classList.toggle("hidden", !lessonView);
+  $("toggleContent").setAttribute("aria-expanded", String(drawerOn));
+  $("scrim").classList.toggle("hidden", !drawerOn);
+  for (const [id, name] of [
+    ["navCourses", "home"],
+    ["navReference", "reference"],
+    ["navFlash", "flashcards"],
+  ]) {
+    const link = $(id);
+    if (view === name || (name === "home" && view === "lesson"))
+      link.setAttribute("aria-current", "page");
+    else link.removeAttribute("aria-current");
+  }
+}
+function toggleDrawer(force) {
+  if (view !== "lesson") return;
+  const wasOpen = ui.drawer !== false;
+  ui.drawer = typeof force === "boolean" ? force : !wasOpen;
+  saveUi();
+  applyChrome();
+  if (ui.drawer) $("drawer").scrollTop = 0;
+}
+
+// ---- Views -----------------------------------------------------------------
+function setView(next) {
+  view = next;
+  for (const id of ["home", "lesson", "reference", "flashcards"])
+    $(id).classList.toggle("hidden", id !== next);
+  applyChrome();
   updateQuickNav();
 }
-function openLesson(i) {
+function showHome(writeHash = true, toCurriculum = false, focus = true) {
+  current = -1;
+  passed = false;
+  setView("home");
+  if (writeHash) setHash("#/");
+  updateProgress();
+  if (toCurriculum) {
+    $("curriculum").scrollIntoView({ block: "start" });
+    $("curriculumTitle").focus({ preventScroll: true });
+  } else {
+    window.scrollTo(0, 0);
+    if (focus) $("overviewTitle").focus({ preventScroll: true });
+  }
+}
+function selectCourse(id) {
+  if (!courses.some((c) => c.id === id)) return;
+  ui.course = id;
+  $("search").value = "";
+  saveUi();
+  if (view !== "home") showHome(false, true);
+  else {
+    renderCourseCards();
+    renderCards();
+    $("curriculum").scrollIntoView({ block: "start" });
+  }
+  setHash(`#/course/${id}`);
+}
+function lessonHtml(i) {
+  const l = lessons[i],
+    position = order.indexOf(i),
+    gi = groupIndexOf(i),
+    group = groups[gi],
+    course = courseById(group.course),
+    done = completed.has(i);
+  const jumps = [
+    ["remember", "Remember"],
+    ["taglish", "Taglish"],
+    ["lessonContent", "Lesson"],
+    ["proTips", "Pro tip"],
+    ["practice", "Check"],
+  ];
+  return `<nav class="crumbs" aria-label="Breadcrumb"><a href="#/course/${course.id}">${escapeText(course.title)}</a><span aria-hidden="true">/</span><span>${escapeText(group.title)}</span></nav>
+<header class="lesson-head">
+<p class="kicker">Lesson ${position + 1} of ${order.length} · ${escapeText(l.time)} · English + Taglish</p>
+<h1 tabindex="-1" id="lessonTitle">${escapeText(l.title)}</h1>
+<p class="lede">${escapeText(l.desc)}</p>
+<nav class="lesson-jumps" aria-label="Lesson sections">${jumps.map(([id, label]) => `<button data-action="jump" data-target="${id}">${label}</button>`).join("")}</nav>
+</header>
+<div id="lessonContent" class="prose">${l.body}</div>
+<section class="practice" id="practice" aria-labelledby="practiceTitle">
+<h2 id="practiceTitle">Check your understanding</h2>
+<p class="question">${escapeText(l.scenario)}</p>
+<p class="small">Choose one answer, or press 1–${l.answers.length}. You can retry as often as you need.</p>
+<div class="answers" role="group" aria-label="Answer choices">${l.answers.map((a, n) => `<button class="answer" id="answer${n}" data-action="answer" data-answer="${n}" aria-keyshortcuts="${n + 1}"><span class="key" aria-hidden="true">${n + 1}</span><span>${escapeText(a)}</span></button>`).join("")}</div>
+<div class="feedback" id="feedback" role="status" aria-live="polite">${done ? "You completed this lesson. Try the question again to review." : "Choose an answer to see the explanation."}</div>
+</section>
+<div class="completion">
+<button class="primary" id="complete" data-action="complete" ${passed ? "" : "disabled"}>${done ? "Completed" : "Mark lesson complete"}</button>
+<span id="completeHint" class="small">${passed ? "You can continue or review this lesson." : "Answer the check correctly to mark this lesson complete."}</span>
+</div>`;
+}
+function openLesson(i, writeHash = true) {
   if (!Number.isInteger(i) || i < 0 || i >= lessons.length)
     throw Error("Invalid lesson");
   current = i;
   last = i;
   passed = completed.has(i);
+  ui.open[groupIndexOf(i)] = true;
+  setView("lesson");
+  if (writeHash) setHash(`#/lesson/${i + 1}`);
   save();
-  const l = lessons[i],
-    position = order.indexOf(i),
-    group = groups.find((g) => g.ids.includes(i));
-  $("home").classList.add("hidden");
-  $("lesson").classList.remove("hidden");
-  $("lesson").innerHTML =
-    `<button class="back" data-action="home">All lessons</button>
-<div class="label">${escapeText(group.title)} · Lesson ${position + 1} of ${lessons.length} · ${escapeText(l.time)}</div>
-<h1 tabindex="-1" id="lessonTitle">${escapeText(l.title)}</h1>
-<p class="group-note">${escapeText(l.desc)}</p>
-<nav class="lesson-jumps" aria-label="Lesson sections">
-<a href="#lessonContent">Read the lesson</a>
-<a href="#taglish">Taglish</a>
-<a href="#proTips">Pro tips</a>
-<a href="#practice">Practice and check</a>
-</nav>
-<div id="lessonContent">${l.body}</div>
-<section class="practice" id="practice">
-<h2>Practice and check</h2>
-<p>${escapeText(l.scenario)}</p>
-<p class="small">Choose one answer. You can retry as often as you need.</p>${l.answers.map((a, n) => `<button class="answer" id="answer${n}" data-action="answer" data-answer="${n}">${escapeText(a)}</button>`).join("")}<div class="feedback" id="feedback" role="status">${completed.has(i) ? "You completed this lesson. Try the question again to review." : "Choose an answer to see the explanation."}</div>
-</section>
-<div class="completion">
-<button class="primary" id="complete" data-action="complete" ${passed ? "" : "disabled"}>${completed.has(i) ? "Completed" : "Mark lesson complete"}</button>
-<span id="completeHint" class="small">${passed ? "You can continue or review this lesson." : "Answer the check correctly to mark this lesson complete."}</span>
-</div>`;
-  highlight();
+  $("lesson").innerHTML = lessonHtml(i);
   window.scrollTo(0, 0);
   $("lessonTitle").focus({ preventScroll: true });
-  updateQuickNav();
+  const row = document.querySelector("#drawerList .row.current");
+  if (row && row.scrollIntoView) row.scrollIntoView({ block: "nearest" });
+  if (window.innerWidth < 1000 && ui.drawer !== false) {
+    ui.drawer = false;
+    applyChrome();
+  }
 }
 function checkAnswer(n) {
   if (
@@ -247,8 +584,11 @@ function checkAnswer(n) {
   const l = lessons[current],
     correct = n === l.correct;
   $("feedback").textContent = (correct ? "Correct. " : "Try again. ") + l.why;
+  $("feedback").classList.toggle("good", correct);
+  $("feedback").classList.toggle("bad", !correct);
   document.querySelectorAll(".answer").forEach((x, i) => {
     x.classList.toggle("selected", i === n);
+    x.classList.toggle("right", correct && i === n);
     x.setAttribute("aria-pressed", String(i === n));
   });
   if (correct) {
@@ -268,15 +608,52 @@ function completeLesson() {
   $("completeHint").textContent =
     "Lesson completed. Use Next lesson to keep learning.";
 }
-renderNav();
-updateProgress();
-highlight();
+function jumpTo(id) {
+  const target = document.getElementById(id);
+  if (target && target.scrollIntoView) {
+    target.scrollIntoView({ block: "start" });
+    if (target.setAttribute && !target.hasAttribute("tabindex"))
+      target.setAttribute("tabindex", "-1");
+    target.focus({ preventScroll: true });
+  }
+}
+
+// ---- Preferences ------------------------------------------------------------
+function applyTheme() {
+  const root = document.documentElement;
+  if (!root) return;
+  if (ui.theme === "auto") root.removeAttribute("data-theme");
+  else root.setAttribute("data-theme", ui.theme);
+  const label = {
+    auto: "Theme: match device",
+    light: "Theme: light",
+    dark: "Theme: dark",
+  }[ui.theme];
+  $("toggleTheme").setAttribute("aria-label", `${label}. Activate to change.`);
+  $("toggleTheme").setAttribute("title", label);
+  $("toggleTheme").innerHTML = icon(ui.theme === "dark" ? "moon" : "sun");
+}
+function cycleTheme() {
+  ui.theme = { auto: "light", light: "dark", dark: "auto" }[ui.theme];
+  saveUi();
+  applyTheme();
+}
+function openHelp() {
+  const dialog = $("helpDialog");
+  if (dialog.showModal && !dialog.open) dialog.showModal();
+}
+function closeHelp() {
+  const dialog = $("helpDialog");
+  if (dialog.close) dialog.close();
+}
+
+// ---- Registration of the optional page tool and event delegation -----------
 if (document.modelContext?.registerTool) {
   try {
     Promise.resolve(
       document.modelContext.registerTool({
         name: "open_training_lesson",
-        description: `Open a medical VA lesson using its learning-path number, from 1 to ${order.length}.`,
+        description: `Open a medical VA or medical coding lesson using its learning-path number, from 1 to ${order.length}.`,
         inputSchema: {
           type: "object",
           properties: {
@@ -302,8 +679,6 @@ if (document.modelContext?.registerTool) {
     ).catch(() => {});
   } catch {}
 }
-
-// Delegate button clicks so dynamic lesson controls work under a strict CSP.
 document.addEventListener("click", (event) => {
   const button = event.target.closest?.("button[data-action]");
   if (!button || button.disabled) return;
@@ -329,9 +704,36 @@ document.addEventListener("click", (event) => {
     case "move":
       moveLesson(Number(button.dataset.direction));
       break;
+    case "course":
+      selectCourse(button.dataset.course);
+      break;
+    case "toggle-section":
+      toggleSection(Number(button.dataset.section), button);
+      break;
+    case "expand-all":
+      setAllSections(true);
+      break;
+    case "collapse-all":
+      setAllSections(false);
+      break;
+    case "toggle-content":
+      toggleDrawer();
+      break;
+    case "close-content":
+      toggleDrawer(false);
+      break;
+    case "theme":
+      cycleTheme();
+      break;
+    case "help":
+      openHelp();
+      break;
+    case "close-help":
+      closeHelp();
+      break;
+    case "jump":
+      jumpTo(button.dataset.target);
+      break;
   }
 });
 $("search").addEventListener("input", renderCards);
-$("lessonSelect").addEventListener("change", (event) => {
-  if (event.target.value !== "") openLesson(Number(event.target.value));
-});
