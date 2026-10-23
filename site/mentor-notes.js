@@ -209,7 +209,14 @@ function applyMentorNotes(allLessons) {
     l.taglish = explanation;
     l.proTip = tip;
     l.mentorDrill = drill;
-    l.body = `<section class="mentor-coach" id="taglish" aria-label="Taglish explanation">
+    const remember = Array.isArray(l.remember) ? l.remember : [];
+    const rememberBox = remember.length
+      ? `<section class="remember-box" id="remember" aria-label="What to remember">
+<h2>What to remember</h2>
+<ul>${remember.map((x) => `<li>${x}</li>`).join("")}</ul>
+</section>`
+      : "";
+    l.body = `${rememberBox}<section class="mentor-coach" id="taglish" aria-label="Taglish explanation">
 <h2>Taglish explanation</h2>
 <p lang="fil">${explanation}</p>
 </section>${l.body}<section class="mentor-tip" id="proTips">

@@ -1,18 +1,35 @@
-# Medical VA First Steps
+# MedVA Academy
 
-A beginner training hub with 54 lessons, English and Taglish explanations, pro tips, practice questions, and eight comprehensive workshops. Progress stays in the learner's browser. Lesson completion records study progress; it is not certification or proof of professional competence.
+A beginner-to-professional training hub for medical virtual assistants and medical coders. It has 123 lessons in two courses, English and Taglish explanations, "What to remember" summaries, pro tips, practice questions, coder cheat sheets, and flashcards. Progress stays in the learner's browser. Lesson completion records study progress; it is not certification or proof of professional competence.
+
+## Courses
+
+1. **Medical VA Foundations** (63 lessons, 12 sections): role and boundaries, privacy, calls, scheduling, referrals, insurance workflows, client onboarding, eight comprehensive workshops, eligibility verification, credentialing support, patient billing calls, medication vocabulary, spreadsheets, and remote-work habits.
+2. **Medical Coding and Billing Career Track** (60 lessons, 9 sections): terminology and anatomy, ICD-10-CM, CPT, HCPCS, E/M leveling, modifiers, global surgery and NCCI, specialty coding (hospital and emergency, skin, orthopedic, behavioral health, obstetric, anesthesia, cardiology testing, pediatrics, screening, operative reports), deeper diagnosis coding (cardiovascular, respiratory, diabetes and kidney, neoplasms, injuries and drug reactions), an inpatient coding primer, clinical documentation integrity, claims, remittance codes, denials, patient billing, A/R metrics, compliance, risk adjustment, quality reporting, audits, secure remote work, certification roadmap (AAPC and AHIMA), four timed practice sets, interview preparation, packaging coder VA services, and a capstone.
+
+CPT is copyrighted by the American Medical Association. The lessons paraphrase concepts and cite code numbers only. Use a licensed, current code book for real coding, and verify every rule against the current year's edition.
+
+## Using the site
+
+- **Course content sidebar:** collapsible sections with progress, like Udemy or Coursera. Hide or show it with the Course content button or the `C` key.
+- **Keyboard shortcuts:** `←` / `→` previous and next lesson, `1`–`3` choose an answer, `M` mark complete, `C` toggle course content, `/` search, `?` list all shortcuts. Flashcards use `Space`, `←` / `→`, `K`, `A`, and `S`. Shortcuts pause while you type in a field.
+- **Reference:** `#/reference` has modifiers, E/M levels, remittance codes, ICD-10-CM chapters, CPT sections, HCPCS letters, place of service codes, CMS-1500 boxes, and abbreviations.
+- **Flashcards:** `#/flashcards` drills every reference row and remembers the cards you know.
+- **Notes:** each lesson has a private notes box saved in your browser only.
+- **Themes:** light, dark, or match the device.
+- Every lesson, reference sheet, and the flashcards have shareable links such as `#/lesson/66`. Lesson links use the stable lesson id, so they keep working when new lessons are added.
 
 ## Run locally
 
 Install Node.js 22 or later, then run:
 
-```sh
+```bash
 npm run dev
 ```
 
 Open http://127.0.0.1:4173/medicalva/. No environment variables or API keys are required. The website has no runtime dependencies or build step.
 
-```sh
+```bash
 npm test
 npm ci
 npm run format:check
@@ -22,17 +39,19 @@ npm run format:check
 
 ## Source guide
 
-- `site/index.html`, `base.css`, and `usability.css`: layout and responsive styling.
-- `site/app.js`, `more-lessons.js`, `pro-lessons.js`, `client-lessons.js`, `workshops.js`, and `advanced-lessons.js`: curriculum.
-- `site/mentor-notes.js`: Taglish explanations and mentor tips.
-- `site/learning.js`: rendering, search, practice checks, and browser-local progress.
-- `site/quick-nav.js`: sticky Previous/Next controls and left/right keyboard shortcuts.
-- `tests/`: curriculum flow and security regression checks.
+- `site/index.html`, `styles.css`, `theme.js`: layout, design tokens, light and dark themes.
+- `site/app.js`, `more-lessons.js`, `pro-lessons.js`, `client-lessons.js`, `workshops.js`, `advanced-lessons.js`: Medical VA Foundations curriculum.
+- `site/coding-build.js`, `coding-foundations.js`, `coding-procedures.js`, `coding-business.js`, `coding-specialty.js`, `coding-extra.js`, `coding-more.js`: Medical Coding and Billing Career Track. `site/va-extra.js`, `va-more.js`: extra Foundations lessons (registered in the Foundations course in `learning.js`).
+- `site/mentor-notes.js`: Taglish explanations and pro tips. `site/remember-notes.js`: takeaways for the foundations lessons. Coding lessons carry their own.
+- `site/reference.js`: cheat sheet data that also powers the flashcards.
+- `site/learning.js`: courses, sections, lesson player, course content sidebar, progress, preferences, and routing.
+- `site/quick-nav.js`: Previous/Next bar and keyboard shortcuts. `site/study-tools.js`: reference and flashcards. `site/start.js`: startup.
+- `tests/`: curriculum, behavior, security, and lesson-HTML regression checks.
 
-Use Previous/Next with mouse or touch. Left/right arrow keys work when reading a lesson and do not interrupt form controls. The lesson picker and search provide direct access to topics.
+Lesson ids are append-only so saved progress survives curriculum additions. Add new lessons at the end of a lesson file and register them in a section in `learning.js`.
 
 ## GitHub Pages
 
-The workflow verifies every push and publishes only `site/` from `main`. Enable **Settings → Pages → Source → GitHub Actions** in `p00rmanS/medicalva`. The expected address is https://p00rmanS.github.io/medicalva/ once deployment succeeds. Pull requests run checks without deploying. The workflow follows [GitHub's Pages guidance](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
+The workflow verifies every push and publishes only `site/` from `main`. Enable Settings → Pages → Source → GitHub Actions in p00rmanS/medicalva. The expected address is https://p00rmanS.github.io/medicalva/ once deployment succeeds. Pull requests run checks without deploying.
 
-All asset paths are relative so the project works under `/medicalva/`. GitHub Pages serves public static files: never put credentials, patient information, or private documents in this repository or website. See [SECURITY.md](SECURITY.md).
+All asset paths are relative so the project works under `/medicalva/`. GitHub Pages serves public static files: never put credentials, patient information, or private documents in this repository or website. See SECURITY.md.
