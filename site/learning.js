@@ -11,6 +11,14 @@ lessons.forEach((l, i) => {
   if (!l.remember && rememberNotes[i]) l.remember = rememberNotes[i];
 });
 applyMentorNotes(lessons);
+// Replace the placeholder wrong answers with the written distractors.
+lessons.forEach((l, i) => {
+  const pair = distractors[i];
+  if (!pair) return;
+  const right = l.answers[l.correct];
+  l.answers = [right, ...pair];
+  l.correct = 0;
+});
 // Rotate answer positions so the right choice is not always in the same slot.
 lessons.forEach((l, i) => {
   const n = l.answers.length,
@@ -85,7 +93,7 @@ const courses = [
       {
         title: "Practice operations and remote skills",
         note: "Verify coverage, support credentialing, answer billing calls, learn medication vocabulary, and work efficiently from home.",
-        ids: [103, 104, 105, 106, 107, 108],
+        ids: [103, 104, 105, 106, 107, 108, 120, 121, 122, 132, 133, 134],
       },
     ],
   },
@@ -104,37 +112,42 @@ const courses = [
       {
         title: "ICD-10-CM diagnosis coding",
         note: "Assign accurate diagnosis codes using the Index, the Tabular List, and the Official Guidelines.",
-        ids: [60, 61, 62, 63, 64],
+        ids: [60, 61, 62, 63, 64, 112, 113, 114, 115, 123, 124, 125],
       },
       {
         title: "CPT and HCPCS procedure coding",
         note: "Code visits, procedures, drugs, and services, then combine them into a clean encounter.",
-        ids: [65, 66, 67, 68, 69, 70, 71, 72, 73],
+        ids: [65, 66, 67, 68, 69, 70, 71, 72, 73, 126, 127],
       },
       {
         title: "Specialty coding",
         note: "Apply the rules to hospital, skin, orthopedic, behavioral health, obstetric, and anesthesia services, and read an operative report.",
-        ids: [90, 91, 92, 93, 94, 95, 96],
+        ids: [90, 91, 92, 93, 94, 95, 96, 109, 110, 111],
+      },
+      {
+        title: "Beyond the office",
+        note: "A first look at hospital inpatient coding, where the rules differ from the outpatient work.",
+        ids: [116],
       },
       {
         title: "Claims, payers, and denials",
         note: "Follow a claim to payment, read remittances, work denials, and bill patients clearly.",
-        ids: [74, 75, 76, 77, 78, 79, 80, 97],
+        ids: [74, 75, 76, 77, 78, 79, 80, 97, 128, 129],
       },
       {
         title: "Compliance, risk, and quality",
         note: "Code honestly, understand risk adjustment, measure accuracy, and report quality data.",
-        ids: [81, 82, 83, 98],
+        ids: [81, 82, 83, 98, 117],
       },
       {
         title: "Exam practice sets",
         note: "Timed practice with answers and reasoning for diagnosis coding, procedure coding, and the back end of the claim.",
-        ids: [99, 100, 101],
+        ids: [99, 100, 101, 118, 130, 131],
       },
       {
         title: "Tools, security, and career launch",
         note: "Work securely, choose a credential, package your services, prepare for interviews, and finish with a capstone.",
-        ids: [84, 85, 86, 87, 88, 102, 89],
+        ids: [84, 85, 86, 87, 88, 102, 119, 89],
       },
     ],
   },
@@ -172,6 +185,20 @@ try {
 } catch {
   storageAvailable = false;
 }
+let notes = {};
+try {
+  const savedNotes = JSON.parse(
+    localStorage.getItem("medical-va-notes-v1") || "{}",
+  );
+  if (savedNotes && typeof savedNotes === "object")
+    for (const [k, v] of Object.entries(savedNotes))
+      if (
+        /^\d+$/.test(k) &&
+        Number(k) < lessons.length &&
+        typeof v === "string"
+      )
+        notes[k] = v.slice(0, 5000);
+} catch {}
 try {
   const prefs = JSON.parse(localStorage.getItem("medical-va-ui-v1") || "{}");
   if (prefs && typeof prefs === "object") {
@@ -551,7 +578,12 @@ function lessonHtml(i) {
 <div class="completion">
 <button class="primary" id="complete" data-action="complete" ${passed ? "" : "disabled"}>${done ? "Completed" : "Mark lesson complete"}</button>
 <span id="completeHint" class="small">${passed ? "You can continue or review this lesson." : "Answer the check correctly to mark this lesson complete."}</span>
-</div>`;
+</div>
+<section class="notes" aria-labelledby="notesTitle">
+<h2 id="notesTitle">Your notes</h2>
+<label class="small" for="lessonNotes">Saved in this browser only. Write in your own words, and never enter real patient information.</label>
+<textarea id="lessonNotes" rows="5" maxlength="5000" placeholder="What will you remember? What is still unclear?"></textarea>
+</section>`;
 }
 function openLesson(i, writeHash = true) {
   if (!Number.isInteger(i) || i < 0 || i >= lessons.length)
@@ -565,6 +597,7 @@ function openLesson(i, writeHash = true) {
   save();
   $("lesson").innerHTML = lessonHtml(i);
   window.scrollTo(0, 0);
+  $("lessonNotes").value = notes[i] || "";
   $("lessonTitle").focus({ preventScroll: true });
   const row = document.querySelector("#drawerList .row.current");
   if (row && row.scrollIntoView) row.scrollIntoView({ block: "nearest" });
@@ -737,3 +770,12 @@ document.addEventListener("click", (event) => {
   }
 });
 $("search").addEventListener("input", renderCards);
+document.addEventListener("input", (event) => {
+  if (event.target?.id !== "lessonNotes" || current < 0) return;
+  const text = String(event.target.value).slice(0, 5000);
+  if (text.trim()) notes[current] = text;
+  else delete notes[current];
+  try {
+    localStorage.setItem("medical-va-notes-v1", JSON.stringify(notes));
+  } catch {}
+});

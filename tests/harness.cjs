@@ -18,14 +18,24 @@ const scripts = [
   "coding-specialty.js",
   "coding-extra.js",
   "va-extra.js",
+  "coding-more.js",
+  "va-more.js",
+  "coding-systems.js",
+  "va-ops.js",
   "remember-notes.js",
   "reference.js",
+  "distractors.js",
   "learning.js",
   "quick-nav.js",
   "study-tools.js",
   "start.js",
 ];
-function boot({ progress = null, prefs = null, hash = "" } = {}) {
+function boot({
+  progress = null,
+  prefs = null,
+  hash = "",
+  notesData = null,
+} = {}) {
   const elements = new Map();
   const handlers = new Map();
   const listeners = new Map();
@@ -34,6 +44,7 @@ function boot({ progress = null, prefs = null, hash = "" } = {}) {
     "medical-va-learning-v1": progress,
     "medical-va-ui-v1": prefs,
     "medical-va-cards-v1": null,
+    "medical-va-notes-v1": notesData,
   };
   const makeElement = () => {
     const attrs = new Map();

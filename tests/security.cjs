@@ -32,7 +32,7 @@ assert(html.includes('href="styles.css"'));
 for (const saved of [
   "null",
   "invalid json",
-  '{"completed":[-1,0,0,109,"1"],"last":999}',
+  '{"completed":[-1,0,0,135,"1"],"last":999}',
 ]) {
   const app = boot({ progress: saved });
   assert(app.run("completed.size <= 1 && last === 0"));
@@ -66,7 +66,7 @@ assert.equal(returningLearner.run("last"), 47);
 returningLearner.run("openLesson(47);moveLesson(1)");
 assert.equal(returningLearner.run("current"), 48);
 // Crossing from the last foundations lesson into the coding course.
-returningLearner.run("openLesson(108);moveLesson(1)");
+returningLearner.run("openLesson(134);moveLesson(1)");
 assert.equal(returningLearner.run("current"), 54);
 assert.equal(returningLearner.run("courseOf(current).id"), "coding");
 
@@ -148,8 +148,8 @@ const goto = (hash) => {
 };
 goto("#/lesson/5");
 assert.equal(app.run("current"), 4, "lesson links use the stable lesson id");
-goto("#/lesson/109");
-assert.equal(app.run("current"), 108);
+goto("#/lesson/135");
+assert.equal(app.run("current"), 134);
 goto("#/lesson/999");
 assert.equal(app.run("view"), "home");
 goto("#/lesson/abc");
@@ -189,6 +189,15 @@ assert(card({ key: "ArrowRight" }));
 assert.notEqual(app.get("cardFace").textContent, front);
 card({ key: "k" });
 assert(JSON.parse(app.stored["medical-va-cards-v1"]).length >= 1);
+
+// Lesson notes persist per lesson and ignore bad stored data.
+app.run("openLesson(3)");
+app.handlers.get("input")({ target: { id: "lessonNotes", value: "my note" } });
+assert.equal(JSON.parse(app.stored["medical-va-notes-v1"])["3"], "my note");
+app.handlers.get("input")({ target: { id: "lessonNotes", value: "   " } });
+assert.equal(JSON.parse(app.stored["medical-va-notes-v1"])["3"], undefined);
+const badNotes = boot({ notesData: '{"3":"ok","x":"no","500":"no","4":7}' });
+assert.deepEqual(badNotes.run("JSON.stringify(notes)"), '{"3":"ok"}');
 
 // Untrusted text is escaped.
 app.run("lessons[0].title = '<img src=x onerror=alert(1)>';openLesson(0)");

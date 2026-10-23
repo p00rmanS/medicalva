@@ -2,10 +2,10 @@
   "name": "medicalva",
   "version": "1.0.0",
   "private": true,
-  "description": "Buildless medical VA and medical coding learning hub with 109 English and Taglish lessons",
+  "description": "Buildless medical VA and medical coding learning hub with 123 English and Taglish lessons",
   "scripts": {
     "dev": "node scripts/serve.cjs",
-    "test": "node tests/learning.cjs && node tests/security.cjs && node tests/html-audit.cjs",
+    "test": "node tests/learning.cjs && node tests/security.cjs && node tests/html-audit.cjs && node tests/content-audit.cjs",
     "format": "prettier --write site scripts tests README.md SECURITY.md .github package.json",
     "format:check": "prettier --check site scripts tests README.md SECURITY.md .github package.json"
   },

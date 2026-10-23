@@ -1542,3 +1542,29 @@ button.scrim {
 body.view-lesson {
   scroll-padding-top: calc(var(--topbar) + 84px);
 }
+
+.notes {
+  margin-top: 2.2em;
+}
+.notes h2 {
+  font-size: 1.3rem;
+  margin-bottom: 6px;
+}
+.notes label {
+  display: block;
+  margin-bottom: 8px;
+}
+.notes textarea {
+  width: 100%;
+  min-height: 7em;
+  resize: vertical;
+  background: var(--surface);
+  color: var(--ink);
+  border: 2px solid var(--line-strong);
+  border-radius: 4px;
+  padding: 12px 14px;
+  line-height: 1.5;
+}
+.notes textarea:focus {
+  border-color: var(--ink);
+}
