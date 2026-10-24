@@ -1,11 +1,11 @@
 # MedVA Academy
 
-A beginner-to-professional training hub for medical virtual assistants and medical coders. It has 123 lessons in two courses, English and Taglish explanations, "What to remember" summaries, pro tips, practice questions, coder cheat sheets, and flashcards. Progress stays in the learner's browser. Lesson completion records study progress; it is not certification or proof of professional competence.
+A beginner-to-professional training hub for medical virtual assistants and medical coders. It has 148 lessons in two courses, English and Taglish explanations, "What to remember" summaries, pro tips, practice questions, coder cheat sheets, and flashcards. Progress stays in the learner's browser. Lesson completion records study progress; it is not certification or proof of professional competence.
 
 ## Courses
 
-1. **Medical VA Foundations** (63 lessons, 12 sections): role and boundaries, privacy, calls, scheduling, referrals, insurance workflows, client onboarding, eight comprehensive workshops, eligibility verification, credentialing support, patient billing calls, medication vocabulary, spreadsheets, and remote-work habits.
-2. **Medical Coding and Billing Career Track** (60 lessons, 9 sections): terminology and anatomy, ICD-10-CM, CPT, HCPCS, E/M leveling, modifiers, global surgery and NCCI, specialty coding (hospital and emergency, skin, orthopedic, behavioral health, obstetric, anesthesia, cardiology testing, pediatrics, screening, operative reports), deeper diagnosis coding (cardiovascular, respiratory, diabetes and kidney, neoplasms, injuries and drug reactions), an inpatient coding primer, clinical documentation integrity, claims, remittance codes, denials, patient billing, A/R metrics, compliance, risk adjustment, quality reporting, audits, secure remote work, certification roadmap (AAPC and AHIMA), four timed practice sets, interview preparation, packaging coder VA services, and a capstone.
+1. **Medical VA Foundations** (68 lessons, 13 sections): role and boundaries, privacy, calls, scheduling, referrals, insurance workflows, client onboarding, eight comprehensive workshops, eligibility verification, credentialing support, patient billing calls, medication vocabulary, spreadsheets, remote-work habits, lab and imaging coordination, portal support, breach response, and in-depth HIPAA Privacy and Security Rule lessons.
+2. **Medical Coding and Billing Career Track** (80 lessons, 10 sections): terminology and anatomy (including six in-depth medical language lessons by body system), ICD-10-CM, CPT, HCPCS, E/M leveling, modifiers, global surgery and NCCI, specialty coding (hospital and emergency, skin, orthopedic, behavioral health, obstetric, anesthesia, cardiology testing, pediatrics, screening, operative reports), deeper diagnosis coding (cardiovascular, respiratory, diabetes and kidney, neoplasms, injuries and drug reactions), an inpatient coding primer, clinical documentation integrity, deep dives on E/M decision making, modifier 59 and NCCI, denial management programs, compliance programs, and Medicare, claims, remittance codes, denials, patient billing, A/R metrics, compliance, risk adjustment, quality reporting, audits, secure remote work, certification roadmap (AAPC and AHIMA), four timed practice sets, interview preparation, packaging coder VA services, and a capstone.
 
 CPT is copyrighted by the American Medical Association. The lessons paraphrase concepts and cite code numbers only. Use a licensed, current code book for real coding, and verify every rule against the current year's edition.
 
@@ -41,9 +41,9 @@ npm run format:check
 
 - `site/index.html`, `styles.css`, `theme.js`: layout, design tokens, light and dark themes.
 - `site/app.js`, `more-lessons.js`, `pro-lessons.js`, `client-lessons.js`, `workshops.js`, `advanced-lessons.js`: Medical VA Foundations curriculum.
-- `site/coding-build.js`, `coding-foundations.js`, `coding-procedures.js`, `coding-business.js`, `coding-specialty.js`, `coding-extra.js`, `coding-more.js`: Medical Coding and Billing Career Track. `site/va-extra.js`, `va-more.js`: extra Foundations lessons (registered in the Foundations course in `learning.js`).
+- `site/coding-build.js`, `coding-foundations.js`, `coding-procedures.js`, `coding-business.js`, `coding-specialty.js`, `coding-extra.js`, `coding-more.js`, `coding-systems.js`, `coding-depth.js`: Medical Coding and Billing Career Track. `site/va-extra.js`, `va-more.js`, `va-ops.js`, `va-depth.js`: extra Foundations lessons (registered in the Foundations course in `learning.js`).
 - `site/mentor-notes.js`: Taglish explanations and pro tips. `site/remember-notes.js`: takeaways for the foundations lessons. Coding lessons carry their own.
-- `site/reference.js`: cheat sheet data that also powers the flashcards.
+- `site/reference.js`: cheat sheet data that also powers the flashcards. `site/distractors.js`: written wrong answers for the practice checks.
 - `site/learning.js`: courses, sections, lesson player, course content sidebar, progress, preferences, and routing.
 - `site/quick-nav.js`: Previous/Next bar and keyboard shortcuts. `site/study-tools.js`: reference and flashcards. `site/start.js`: startup.
 - `tests/`: curriculum, behavior, security, and lesson-HTML regression checks.

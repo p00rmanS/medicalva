@@ -91,6 +91,11 @@ const courses = [
         ids: [48, 49, 50, 51, 52, 53],
       },
       {
+        title: "Privacy and security in depth",
+        note: "The HIPAA Privacy Rule and Security Rule in detail: who may see what, patient rights, and safeguards for remote work.",
+        ids: [146, 147],
+      },
+      {
         title: "Practice operations and remote skills",
         note: "Verify coverage, support credentialing, answer billing calls, learn medication vocabulary, and work efficiently from home.",
         ids: [103, 104, 105, 106, 107, 108, 120, 121, 122, 132, 133, 134],
@@ -110,6 +115,11 @@ const courses = [
         ids: [54, 55, 56, 57, 58, 59],
       },
       {
+        title: "Medical language by body system",
+        note: "Deep dives on word parts, conditions, tests, and procedures for each body system, with coding connections.",
+        ids: [135, 136, 137, 138, 139, 140],
+      },
+      {
         title: "ICD-10-CM diagnosis coding",
         note: "Assign accurate diagnosis codes using the Index, the Tabular List, and the Official Guidelines.",
         ids: [60, 61, 62, 63, 64, 112, 113, 114, 115, 123, 124, 125],
@@ -117,7 +127,7 @@ const courses = [
       {
         title: "CPT and HCPCS procedure coding",
         note: "Code visits, procedures, drugs, and services, then combine them into a clean encounter.",
-        ids: [65, 66, 67, 68, 69, 70, 71, 72, 73, 126, 127],
+        ids: [65, 66, 67, 68, 69, 70, 71, 72, 73, 126, 127, 141, 142],
       },
       {
         title: "Specialty coding",
@@ -132,12 +142,12 @@ const courses = [
       {
         title: "Claims, payers, and denials",
         note: "Follow a claim to payment, read remittances, work denials, and bill patients clearly.",
-        ids: [74, 75, 76, 77, 78, 79, 80, 97, 128, 129],
+        ids: [74, 75, 76, 77, 78, 79, 80, 97, 128, 129, 143, 145],
       },
       {
         title: "Compliance, risk, and quality",
         note: "Code honestly, understand risk adjustment, measure accuracy, and report quality data.",
-        ids: [81, 82, 83, 98, 117],
+        ids: [81, 82, 83, 98, 117, 144],
       },
       {
         title: "Exam practice sets",
@@ -512,8 +522,15 @@ function toggleDrawer(force) {
 }
 
 // ---- Views -----------------------------------------------------------------
+const DEFAULT_TITLE = "MedVA Academy | Medical VA and Medical Coding Training";
+function setTitle(name) {
+  document.title = name ? `${name} | MedVA Academy` : DEFAULT_TITLE;
+}
 function setView(next) {
   view = next;
+  setTitle(
+    { reference: "Coder cheat sheets", flashcards: "Flashcards" }[next] || "",
+  );
   for (const id of ["home", "lesson", "reference", "flashcards"])
     $(id).classList.toggle("hidden", id !== next);
   applyChrome();
@@ -593,6 +610,7 @@ function openLesson(i, writeHash = true) {
   passed = completed.has(i);
   ui.open[groupIndexOf(i)] = true;
   setView("lesson");
+  setTitle(lessons[i].title);
   if (writeHash) setHash(`#/lesson/${i + 1}`);
   save();
   $("lesson").innerHTML = lessonHtml(i);

@@ -588,6 +588,60 @@ const referenceData = [
     ],
   },
 ];
+// Word parts come straight from the terminology lessons so the two never drift apart.
+(() => {
+  const seen = new Set();
+  const rows = [];
+  for (const lesson of codingLessons) {
+    if (!/^Medical (language in depth|terminology)/.test(lesson.title))
+      continue;
+    const area = lesson.title
+      .replace(/^Medical language in depth: /, "")
+      .replace(/^Medical terminology: /, "General");
+    for (const [part, meaning] of lesson.terms || []) {
+      if (seen.has(part)) continue;
+      seen.add(part);
+      rows.push([part, meaning, area]);
+    }
+  }
+  referenceData.push({
+    id: "wordparts",
+    title: "Medical word parts",
+    intro:
+      "Prefixes, combining forms, and suffixes from the terminology lessons. Split every term into parts before you look it up.",
+    cols: ["Word part", "Meaning", "Found in"],
+    rows,
+  });
+})();
+referenceData.push({
+  id: "mdm",
+  title: "E/M medical decision making at a glance",
+  intro:
+    "Paraphrased summary of the office E/M table. Two of three elements decide the level. Verify wording in the current CPT book.",
+  cols: ["Level", "Problems addressed", "Data and risk"],
+  rows: [
+    [
+      "Straightforward",
+      "One self-limited or minor problem",
+      "Minimal or no data. Minimal risk.",
+    ],
+    [
+      "Low",
+      "Two minor problems, or one stable chronic illness, or one acute uncomplicated illness",
+      "Limited data: two items or an independent historian. Low risk.",
+    ],
+    [
+      "Moderate",
+      "Chronic illness with exacerbation, two or more stable chronic illnesses, undiagnosed new problem, acute illness with systemic symptoms, or acute complicated injury",
+      "Moderate data: three items, independent interpretation, or discussion with an external professional. Moderate risk such as prescription drug management.",
+    ],
+    [
+      "High",
+      "Chronic illness with severe exacerbation, or a threat to life or bodily function",
+      "Extensive data: two of three categories. High risk such as hospitalization decision or drug therapy needing intensive toxicity monitoring.",
+    ],
+  ],
+});
 const flashcardDeck = referenceData.flatMap((section) =>
   section.rows.map((row) => ({
     topic: section.id,

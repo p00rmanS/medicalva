@@ -22,6 +22,8 @@ const scripts = [
   "va-more.js",
   "coding-systems.js",
   "va-ops.js",
+  "coding-depth.js",
+  "va-depth.js",
   "remember-notes.js",
   "reference.js",
   "distractors.js",

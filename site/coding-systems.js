@@ -11,7 +11,7 @@ addCodingLessons([
       "Recognize when an additional code is required.",
     ],
     concept: `<p>Digestive conditions are in Chapter 11 (K00–K95) and genitourinary conditions in Chapter 14 (N00–N99). Many codes depend on details a coder must find in the note: whether there is bleeding, perforation, abscess, or obstruction, which side or organ, and whether the condition is acute or chronic.</p>
-<p><b>Digestive examples.</b> K21.9 GERD without esophagitis. K29.70 gastritis, unspecified, without bleeding. K57.30 diverticulosis of the large intestine without perforation, abscess, or bleeding, and K57.32 diverticulitis of the large intestine without perforation, abscess, or bleeding. K58.0 irritable bowel syndrome with diarrhea and K58.9 without diarrhea. K59.00 constipation, unspecified. K40.90 unilateral inguinal hernia without obstruction or gangrene, not specified as recurrent. K80.20 calculus of gallbladder without cholecystitis and without obstruction. K76.0 fatty (change of) liver, not elsewhere classified. K52.9 noninfective gastroenteritis and colitis, unspecified, while A09 is infectious gastroenteritis and colitis, unspecified.</p>
+<p><b>Digestive examples.</b> K21.9 GERD without esophagitis. K29.70 gastritis, unspecified, without bleeding. K57.30 diverticulosis of the large intestine without perforation, abscess, or bleeding, and K57.32 diverticulitis of the large intestine without perforation, abscess, or bleeding. K58.0 irritable bowel syndrome with diarrhea and K58.9 irritable bowel syndrome, unspecified (older code books title it ‘without diarrhea’). K59.00 constipation, unspecified. K40.90 unilateral inguinal hernia without obstruction or gangrene, not specified as recurrent. K80.20 calculus of gallbladder without cholecystitis and without obstruction. K76.0 fatty (change of) liver, not elsewhere classified. K52.9 noninfective gastroenteritis and colitis, unspecified, while A09 is infectious gastroenteritis and colitis, unspecified.</p>
 <p><b>Urinary and male genital examples.</b> N39.0 urinary tract infection, site not specified. N30.00 acute cystitis without hematuria. N20.0 calculus of kidney and N20.1 calculus of ureter. R31.9 hematuria, unspecified (a symptom code used when no cause is documented). N40.0 benign prostatic hyperplasia without lower urinary tract symptoms (LUTS) and N40.1 with LUTS. N40.1 has a ‘use additional code’ note for the associated symptoms, such as R35.1 nocturia.</p>
 <p>When the note says only ‘abdominal pain,’ use the symptom code (R10.9) unless a definitive diagnosis is documented. A symptom that is a routine part of a confirmed condition is not coded separately.</p>`,
     terms: [
@@ -22,7 +22,7 @@ addCodingLessons([
       ],
       [
         "K58.0 / K58.9",
-        "Irritable bowel syndrome with diarrhea / without diarrhea.",
+        "Irritable bowel syndrome with diarrhea / irritable bowel syndrome, unspecified.",
       ],
       [
         "K40.90",
