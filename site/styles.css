@@ -1568,3 +1568,19 @@ body.view-lesson {
 .notes textarea:focus {
   border-color: var(--ink);
 }
+
+/* Tables: keep words whole. The body default breaks anywhere, which crushes narrow columns. */
+.prose td,
+.prose th,
+.ref-table td,
+.ref-table th {
+  overflow-wrap: normal;
+  word-break: normal;
+}
+.prose table th:first-child,
+.prose table td:first-child {
+  min-width: 7rem;
+}
+.prose table td:nth-child(n + 2) {
+  min-width: 11rem;
+}

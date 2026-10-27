@@ -3,7 +3,7 @@ const { boot } = require("./harness.cjs");
 
 const app = boot();
 const { run, get, tool } = app;
-const TOTAL = 135;
+const TOTAL = 148;
 
 // ---- Curriculum shape ----
 assert.equal(run("lessons.length"), TOTAL);
@@ -13,10 +13,10 @@ assert.deepEqual(
   Array.from({ length: TOTAL }, (_, i) => i),
 );
 assert.equal(run("courses.length"), 2);
-assert.equal(run("courses[0].sections.flatMap(s => s.ids).length"), 66);
-assert.equal(run("courses[1].sections.flatMap(s => s.ids).length"), 69);
+assert.equal(run("courses[0].sections.flatMap(s => s.ids).length"), 68);
+assert.equal(run("courses[1].sections.flatMap(s => s.ids).length"), 80);
 assert.equal(run("order[48]"), 48);
-assert.equal(run("order[66]"), 54, "coding course starts after foundations");
+assert.equal(run("order[68]"), 54, "coding course starts after foundations");
 assert(
   run(
     "lessons.every(l => l.taglish.length > 100 && l.proTip.length > 30 && l.mentorDrill.length > 20)",
@@ -82,7 +82,7 @@ assert(
 );
 assert(
   run(
-    'codingLessons.length === 81 && codingLessons.every(l => l.objectives.length >= 3 && l.steps.length >= 5 && l.drills.length >= 3 && l.rubric.length >= 4 && l.remember.length === 3 && l.body.includes("model response") && l.body.includes("Core concepts"))',
+    'codingLessons.length === 94 && codingLessons.every(l => l.objectives.length >= 3 && l.steps.length >= 5 && l.drills.length >= 3 && l.rubric.length >= 4 && l.remember.length === 3 && l.body.includes("model response") && l.body.includes("Core concepts"))',
   ),
 );
 assert(
@@ -131,5 +131,5 @@ assert(get("cards").innerHTML.includes("section-toggle"));
 assert.equal(get("searchStatus").textContent, "");
 
 console.log(
-  `Verified ${TOTAL} lesson flows, 81 added lessons, reference data, flashcards, saved state, search, and invalid input.`,
+  `Verified ${TOTAL} lesson flows, 94 added lessons, reference data, flashcards, saved state, search, and invalid input.`,
 );

@@ -458,4 +458,29 @@ const distractors = {
     "Let the child interpret and have an adult confirm the key points",
     "Use the child for the intake questions and an interpreter for the rest",
   ],
+  135: [
+    "It names a record made by an instrument",
+    "It names an inflammation of a structure",
+  ],
+  136: [
+    "Looking into the airways with a flexible scope",
+    "Measuring how much air the lungs can hold",
+  ],
+  138: ["A surgical removal of an organ", "An enlargement of a structure"],
+  143: [
+    "Work every denial in the order it arrived",
+    "Write off the smallest denials to clear the queue",
+  ],
+  144: [
+    "Training and education for all staff",
+    "Internal monitoring and auditing of claims",
+  ],
+  146: [
+    "Yes; every disclosure needs a signed authorization before it is sent",
+    "Only if the specialist is outside the practice's own state",
+  ],
+  147: [
+    "It is optional and can be skipped without keeping any record",
+    "It applies only to large hospitals and not to small practices or vendors",
+  ],
 };
