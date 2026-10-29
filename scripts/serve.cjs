@@ -38,6 +38,8 @@ http
       response.writeHead(400).end("Invalid request");
     }
   })
-  .listen(4173, "127.0.0.1", () =>
-    console.log("Preview: http://127.0.0.1:4173/medicalva/"),
+  .listen(Number(process.env.PORT) || 4173, "127.0.0.1", () =>
+    console.log(
+      `Preview: http://127.0.0.1:${Number(process.env.PORT) || 4173}/medicalva/`,
+    ),
   );

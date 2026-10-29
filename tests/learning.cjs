@@ -3,7 +3,7 @@ const { boot } = require("./harness.cjs");
 
 const app = boot();
 const { run, get, tool } = app;
-const TOTAL = 148;
+const TOTAL = 173;
 
 // ---- Curriculum shape ----
 assert.equal(run("lessons.length"), TOTAL);
@@ -14,7 +14,7 @@ assert.deepEqual(
 );
 assert.equal(run("courses.length"), 2);
 assert.equal(run("courses[0].sections.flatMap(s => s.ids).length"), 68);
-assert.equal(run("courses[1].sections.flatMap(s => s.ids).length"), 80);
+assert.equal(run("courses[1].sections.flatMap(s => s.ids).length"), 105);
 assert.equal(run("order[48]"), 48);
 assert.equal(run("order[68]"), 54, "coding course starts after foundations");
 assert(
@@ -51,7 +51,9 @@ assert(
 // ---- Every lesson flow ----
 for (let n = 1; n <= TOTAL; n++) {
   const r = tool.execute({ lesson: n });
-  assert(get("lesson").innerHTML.includes(r.title));
+  assert(
+    get("lesson").innerHTML.includes(run("escapeText(lessons[current].title)")),
+  );
   assert(get("lesson").innerHTML.includes("Check your understanding"));
   assert(run("lessons[current].body.includes('Taglish explanation')"));
   assert(run("lessons[current].body.includes('Pro tip')"));
@@ -82,7 +84,7 @@ assert(
 );
 assert(
   run(
-    'codingLessons.length === 94 && codingLessons.every(l => l.objectives.length >= 3 && l.steps.length >= 5 && l.drills.length >= 3 && l.rubric.length >= 4 && l.remember.length === 3 && l.body.includes("model response") && l.body.includes("Core concepts"))',
+    'codingLessons.length === 119 && codingLessons.every(l => l.objectives.length >= 3 && l.steps.length >= 5 && l.drills.length >= 3 && l.rubric.length >= 4 && l.remember.length === 3 && l.body.includes("model response") && l.body.includes("Core concepts"))',
   ),
 );
 assert(
@@ -131,5 +133,5 @@ assert(get("cards").innerHTML.includes("section-toggle"));
 assert.equal(get("searchStatus").textContent, "");
 
 console.log(
-  `Verified ${TOTAL} lesson flows, 94 added lessons, reference data, flashcards, saved state, search, and invalid input.`,
+  `Verified ${TOTAL} lesson flows, 119 added lessons, reference data, flashcards, saved state, search, and invalid input.`,
 );

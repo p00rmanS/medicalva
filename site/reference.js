@@ -642,6 +642,41 @@ referenceData.push({
     ],
   ],
 });
+referenceData.push({
+  id: "cpcblueprint",
+  title: "CPC exam blueprint",
+  intro:
+    "Domains and question counts from AAPC's published outline (confirm the current version). 100 questions, four hours, 70 correct to pass.",
+  cols: ["Domain", "Questions", "Study here"],
+  rows: [
+    ["Medical terminology", "4", "Terminology lessons"],
+    ["Anatomy", "4", "Anatomy and body-system lessons"],
+    ["Compliance and regulatory", "3", "Compliance, HIPAA, Medicare"],
+    [
+      "Coding guidelines",
+      "7",
+      "ICD-10-CM guidelines, CPT conventions, modifiers",
+    ],
+    ["ICD-10-CM", "5", "ICD-10-CM lessons"],
+    ["HCPCS Level II", "3", "HCPCS lessons"],
+    ["CPT 10000 series", "6", "Skin and breast"],
+    ["CPT 20000 series", "6", "Musculoskeletal"],
+    [
+      "CPT 30000 series",
+      "6",
+      "Respiratory, cardiovascular, hemic and lymphatic",
+    ],
+    ["CPT 40000 series", "6", "Digestive"],
+    ["CPT 50000 series", "6", "Urinary, genital, maternity"],
+    ["CPT 60000 series", "6", "Endocrine, nervous, eye, ear"],
+    ["Radiology", "6", "Imaging lessons"],
+    ["Pathology and laboratory", "6", "Lab and pathology lessons"],
+    ["Medicine", "6", "Medicine section lessons"],
+    ["E/M", "6", "E/M lessons"],
+    ["Anesthesia", "4", "Anesthesia lesson"],
+    ["Cases", "10", "Case practice sets"],
+  ],
+});
 const flashcardDeck = referenceData.flatMap((section) =>
   section.rows.map((row) => ({
     topic: section.id,
