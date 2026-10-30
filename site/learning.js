@@ -137,12 +137,13 @@ const courses = [
         note: "Code visits, procedures, drugs, and services, then combine them into a clean encounter.",
         ids: [
           65, 66, 67, 68, 69, 70, 71, 72, 73, 126, 127, 141, 142, 173, 179, 180,
+          186,
         ],
       },
       {
         title: "CPT surgery series in depth",
         note: "The 20000 through 60000 series with the bundling, approach, and add-on rules that decide the code.",
-        ids: [151, 152, 153, 154, 155, 156],
+        ids: [151, 152, 153, 154, 155, 156, 184],
       },
       {
         title: "Radiology, pathology, medicine, and HCPCS in depth",
@@ -157,7 +158,7 @@ const courses = [
       {
         title: "Beyond the office",
         note: "A first look at hospital inpatient coding, where the rules differ from the outpatient work.",
-        ids: [116],
+        ids: [116, 185, 187],
       },
       {
         title: "Claims, payers, and denials",
@@ -174,7 +175,7 @@ const courses = [
       {
         title: "Exam practice sets",
         note: "Timed practice with answers and reasoning for diagnosis coding, procedure coding, and the back end of the claim.",
-        ids: [99, 100, 101, 118, 130, 131, 168, 169, 182, 183],
+        ids: [99, 100, 101, 118, 130, 131, 168, 169, 182, 183, 188],
       },
       {
         title: "Tools, security, and career launch",
