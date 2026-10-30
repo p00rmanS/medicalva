@@ -483,4 +483,52 @@ const distractors = {
     "It is optional and can be skipped without keeping any record",
     "It applies only to large hospitals and not to small practices or vendors",
   ],
+  150: [
+    "Whenever a specific code pays less than expected",
+    "For every new patient at a first visit",
+  ],
+  152: [
+    "Yes, both are always reported for the same session",
+    "Only for Medicare patients who have a diagnosis",
+  ],
+  153: [
+    "With the primary stent code reported a second time",
+    "It is not reported because it was the same session",
+  ],
+  156: [
+    "The primary injection code reported a second time",
+    "Nothing is added to the original claim line",
+  ],
+  158: [
+    "One unit for the whole report",
+    "Three units, counting each biopsy site separately",
+  ],
+  161: [
+    "Yes, the coder decides whether a value is abnormal",
+    "Yes, every lab result is coded when it is outside range",
+  ],
+  164: [
+    "Abuse only, because it was documented first",
+    "Both, because the note lists them separately",
+  ],
+  165: [
+    "Z68.41 as the first-listed diagnosis from the BMI alone",
+    "E66.01 assigned from the BMI without provider documentation",
+  ],
+  166: [
+    "The patient personally, who then claims reimbursement",
+    "The patient's health plan, since the patient has coverage",
+  ],
+  168: [
+    "As a separate office visit code at every prenatal visit",
+    "As an emergency visit because the patient is pregnant",
+  ],
+  170: [
+    "Start now and sign the agreement after the first week",
+    "Use your personal laptop to work faster until access is ready",
+  ],
+  171: [
+    "It stores the clinical notes and the physician's orders",
+    "It decides how much each payer will pay for a claim",
+  ],
 };
