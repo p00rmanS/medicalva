@@ -30,6 +30,7 @@ const scripts = [
   "coding-payers2.js",
   "coding-cases.js",
   "va-business.js",
+  "coding-breadth.js",
   "remember-notes.js",
   "reference.js",
   "distractors.js",

@@ -129,13 +129,15 @@ const courses = [
         note: "Assign accurate diagnosis codes using the Index, the Tabular List, and the Official Guidelines.",
         ids: [
           60, 61, 62, 63, 64, 112, 113, 114, 115, 123, 124, 125, 161, 162, 163,
-          164, 165,
+          164, 165, 174, 175, 176, 177, 178,
         ],
       },
       {
         title: "CPT and HCPCS procedure coding",
         note: "Code visits, procedures, drugs, and services, then combine them into a clean encounter.",
-        ids: [65, 66, 67, 68, 69, 70, 71, 72, 73, 126, 127, 141, 142],
+        ids: [
+          65, 66, 67, 68, 69, 70, 71, 72, 73, 126, 127, 141, 142, 173, 179, 180,
+        ],
       },
       {
         title: "CPT surgery series in depth",
@@ -160,7 +162,9 @@ const courses = [
       {
         title: "Claims, payers, and denials",
         note: "Follow a claim to payment, read remittances, work denials, and bill patients clearly.",
-        ids: [74, 75, 76, 77, 78, 79, 80, 97, 128, 129, 143, 145, 166, 167],
+        ids: [
+          74, 75, 76, 77, 78, 79, 80, 97, 128, 129, 143, 145, 166, 167, 181,
+        ],
       },
       {
         title: "Compliance, risk, and quality",
@@ -170,7 +174,7 @@ const courses = [
       {
         title: "Exam practice sets",
         note: "Timed practice with answers and reasoning for diagnosis coding, procedure coding, and the back end of the claim.",
-        ids: [99, 100, 101, 118, 130, 131, 168, 169],
+        ids: [99, 100, 101, 118, 130, 131, 168, 169, 182, 183],
       },
       {
         title: "Tools, security, and career launch",
