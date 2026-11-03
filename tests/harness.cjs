@@ -31,6 +31,8 @@ const scripts = [
   "coding-cases.js",
   "va-business.js",
   "coding-breadth.js",
+  "coding-postacute.js",
+  "coding-specialty2.js",
   "remember-notes.js",
   "reference.js",
   "distractors.js",
