@@ -153,7 +153,10 @@ const courses = [
       {
         title: "Specialty coding",
         note: "Apply the rules to hospital, skin, orthopedic, behavioral health, obstetric, and anesthesia services, and read an operative report.",
-        ids: [90, 91, 92, 93, 94, 95, 96, 109, 110, 111, 189, 190, 191],
+        ids: [
+          90, 91, 92, 93, 94, 95, 96, 109, 110, 111, 189, 190, 191, 195, 196,
+          197, 198, 199,
+        ],
       },
       {
         title: "Beyond the office",
@@ -176,12 +179,12 @@ const courses = [
       {
         title: "Exam practice sets",
         note: "Timed practice with answers and reasoning for diagnosis coding, procedure coding, and the back end of the claim.",
-        ids: [99, 100, 101, 118, 130, 131, 168, 169, 182, 183, 188, 194],
+        ids: [99, 100, 101, 118, 130, 131, 168, 169, 182, 183, 188, 194, 202],
       },
       {
         title: "Tools, security, and career launch",
         note: "Work securely, choose a credential, package your services, prepare for interviews, and finish with a capstone.",
-        ids: [84, 85, 86, 87, 88, 102, 119, 170, 171, 172, 89],
+        ids: [84, 85, 86, 87, 88, 102, 119, 170, 171, 172, 200, 201, 89],
       },
     ],
   },

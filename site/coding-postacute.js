@@ -322,8 +322,8 @@ addCodingLessons([
       "A hospice patient sees a physician for a problem unrelated to the terminal diagnosis. Which modifier applies?",
     answers: [
       "Modifier GW for a service unrelated to the terminal condition",
-      "Modifier GV for a physician paid by the hospice",
-      "Modifier 25 for a separate evaluation",
+      "Modifier GV for an attending physician paid by the hospice",
+      "Modifier 25 for a significant separate evaluation visit",
     ],
     correct: 0,
     why: "GW tells Medicare that the service is unrelated to the terminal diagnosis, so it is not part of the hospice payment.",
