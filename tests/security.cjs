@@ -32,7 +32,7 @@ assert(html.includes('href="styles.css"'));
 for (const saved of [
   "null",
   "invalid json",
-  '{"completed":[-1,0,0,203,"1"],"last":999}',
+  '{"completed":[-1,0,0,210,"1"],"last":999}',
 ]) {
   const app = boot({ progress: saved });
   assert(app.run("completed.size <= 1 && last === 0"));
@@ -148,8 +148,8 @@ const goto = (hash) => {
 };
 goto("#/lesson/5");
 assert.equal(app.run("current"), 4, "lesson links use the stable lesson id");
-goto("#/lesson/203");
-assert.equal(app.run("current"), 202);
+goto("#/lesson/210");
+assert.equal(app.run("current"), 209);
 goto("#/lesson/999");
 assert.equal(app.run("view"), "home");
 goto("#/lesson/abc");
