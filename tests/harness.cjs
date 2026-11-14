@@ -33,6 +33,8 @@ const scripts = [
   "coding-breadth.js",
   "coding-postacute.js",
   "coding-specialty2.js",
+  "coding-specialty3.js",
+  "coding-wide.js",
   "remember-notes.js",
   "reference.js",
   "distractors.js",

@@ -890,8 +890,8 @@ addCodingLessons([
       "A malignant lesion measures 1.2 cm and the margins are 0.4 cm on each side. What diameter is used to choose the excision code?",
     answers: [
       "2.0 cm, the lesion plus both margins",
-      "1.2 cm, the lesion alone",
-      "0.4 cm, one margin alone",
+      "1.2 cm, the size of the lesion alone",
+      "0.4 cm, the width of one margin only",
     ],
     correct: 0,
     why: "The excised diameter includes the lesion and the margins on both sides, here 1.2 plus 0.4 plus 0.4.",
