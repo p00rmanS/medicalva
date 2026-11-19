@@ -521,7 +521,7 @@ addCodingLessons([
       "Apply physical status and provider modifiers.",
     ],
     concept: `<p>Anesthesia has its own section of CPT (00100–01999) and its own payment formula. Payment equals <b>(base units + time units + modifying units) × a conversion factor</b>. The <b>base units</b> come from the anesthesia code and reflect complexity. <b>Time units</b> are based on anesthesia time, which begins when the provider starts preparing the patient and ends when the provider is no longer in personal attendance. Medicare uses 15 minutes per time unit. <b>Modifying units</b> come from physical status and qualifying circumstances.</p>
-<p>The anesthesia code is chosen by the <em>surgical procedure</em> and anatomic site the anesthesia supports, not by the anesthetic method. For example, 00740 is for upper gastrointestinal endoscopic procedures, 00811 for lower intestinal endoscopic procedures not otherwise specified, 00812 for screening colonoscopy, and 01402 for a total knee arthroplasty. On the claim, anesthesia time is reported in minutes.</p>
+<p>The anesthesia code is chosen by the <em>surgical procedure</em> and anatomic site the anesthesia supports, not by the anesthetic method. For example, 00731 is for upper gastrointestinal endoscopic procedures not otherwise specified, 00811 for lower intestinal endoscopic procedures not otherwise specified, 00812 for screening colonoscopy, and 01402 for a total knee arthroplasty. On the claim, anesthesia time is reported in minutes.</p>
 <p><b>Physical status modifiers</b> describe the patient: P1 normal healthy patient, P2 mild systemic disease, P3 severe systemic disease, P4 severe systemic disease that is a constant threat to life, P5 moribund, and P6 declared brain-dead organ donor. Under ASA values P3 adds 1 unit, P4 adds 2, and P5 adds 3, while P1, P2, and P6 add none. <b>Qualifying circumstances</b> codes such as 99100 (extreme age) and 99140 (emergency conditions) add units.</p>
 <p><b>Provider modifiers</b> show who did the work: AA anesthesiologist personally performed, QK medical direction of two to four concurrent procedures, QY medical direction of one CRNA, QX CRNA service with medical direction, QZ CRNA without medical direction, and AD supervision of more than four. Payment shares depend on these modifiers.</p>`,
     terms: [
@@ -560,7 +560,7 @@ addCodingLessons([
         "00812 (anesthesia for screening colonoscopy), with the screening diagnosis from the procedure record. Check payer rules for any added modifier when the screening becomes diagnostic.",
       ],
     ],
-    case: "A coder selects anesthesia code 00740 for a knee arthroplasty because the patient was under general anesthesia.",
+    case: "A coder selects an upper gastrointestinal anesthesia code for a knee arthroplasty because the patient was under general anesthesia.",
     model:
       "Anesthesia codes follow the surgical procedure and site, not the type of anesthetic. A knee arthroplasty uses the knee anesthesia code (such as 01402), not an upper GI code. Correct the claim and recheck the base units.",
     mistakes: [

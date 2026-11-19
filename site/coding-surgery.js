@@ -195,7 +195,7 @@ addCodingLessons([
     concept: `<p>Cardiovascular codes (33016–37799) are among the most structured in CPT. Learn the <b>building blocks</b>: the vessel treated, the approach (percutaneous, open), the device (stent, graft, lead), and the work performed.</p>
 <table class="ref-table"><thead><tr><th>Area</th><th>Examples (verify in the current book)</th></tr></thead><tbody>
 <tr><td>Cardiac catheterization</td><td>93451 right heart. 93452 left heart. 93458 left heart with coronary angiography. 93460 right and left heart with coronary angiography.</td></tr>
-<tr><td>Coronary intervention</td><td>92920 balloon angioplasty, one vessel. 92928 stent, one vessel. 92929 add-on for each additional vessel stented. 92941 intervention in acute myocardial infarction.</td></tr>
+<tr><td>Coronary intervention</td><td>92920 balloon angioplasty, one vessel. 92928 stent, one major artery and its branches (the old add-ons such as 92929 were deleted for 2026, and 92930 is new for complex multi-lesion stenting). 92941 intervention in acute myocardial infarction.</td></tr>
 <tr><td>Bypass and valves</td><td>33533 coronary artery bypass with a single arterial graft. 33510 with a single venous graft. 33405 aortic valve replacement. 33361 transcatheter aortic valve replacement.</td></tr>
 <tr><td>Pacemakers and defibrillators</td><td>33206 atrial lead. 33207 ventricular lead. 33208 both. 33227 generator replacement, single lead. 33249 implantable defibrillator.</td></tr>
 <tr><td>Vascular access</td><td>36556 non-tunneled central venous catheter, age 5 or older. 36569 peripherally inserted central catheter (PICC) age 5 or older without imaging. 36573 PICC with imaging. 36561 tunneled catheter with port.</td></tr>
@@ -217,7 +217,7 @@ addCodingLessons([
       ],
       [
         "A cardiologist places two stents in two different major coronary arteries during one session.",
-        "92928 for the first vessel and the add-on 92929 for the second vessel, with the vessel modifiers required by the payer.",
+        "92928 for each major artery, with the vessel modifiers required by the payer. The old add-on 92929 was deleted for 2026.",
       ],
       [
         "A dual-chamber pacemaker is implanted with an atrial and a ventricular lead.",
@@ -374,7 +374,7 @@ addCodingLessons([
     concept: `<p>The 50000 series covers urinary (50010–53899), male genital (54000–55899), female genital (56405–58999), and maternity care and delivery (59000–59899).</p>
 <table class="ref-table"><thead><tr><th>Area</th><th>Examples (verify in the current book)</th></tr></thead><tbody>
 <tr><td>Urinary</td><td>52000 diagnostic cystoscopy. 52204 with biopsy. 52234 resection of a small bladder tumor. 52332 ureteral stent insertion. 52352 ureteroscopy with stone removal. 50590 shock wave lithotripsy. 51701 and 51702 bladder catheterization. 51798 post-void residual by ultrasound.</td></tr>
-<tr><td>Prostate and male genital</td><td>52601 transurethral resection of the prostate. 55700 prostate biopsy. 55250 vasectomy. 54150 newborn circumcision with a clamp or device. 54640 orchiopexy. 55040 hydrocele excision.</td></tr>
+<tr><td>Prostate and male genital</td><td>52601 transurethral resection of the prostate. Prostate biopsy (the old code 55700 was deleted effective 2026, so check the current CPT book). 55250 vasectomy. 54150 newborn circumcision with a clamp or device. 54640 orchiopexy. 55040 hydrocele excision.</td></tr>
 <tr><td>Cervix and uterus procedures</td><td>57452 colposcopy. 57454 colposcopy with biopsy. 57460 LEEP. 58100 endometrial biopsy. 58120 dilation and curettage. 58555 diagnostic hysteroscopy. 58558 hysteroscopy with biopsy. 58300 IUD insertion and 58301 removal.</td></tr>
 <tr><td>Hysterectomy</td><td>58150 total abdominal, with or without removal of tubes and ovaries. 58260 vaginal, uterus 250 grams or less. 58570 laparoscopic total, uterus 250 grams or less. 58940 oophorectomy.</td></tr>
 <tr><td>Tubal and other</td><td>58670 laparoscopic tubal fulguration. 58671 tubal occlusion with a device.</td></tr>
@@ -552,7 +552,7 @@ addCodingLessons([
 <tr><td>Fluoroscopy and contrast studies</td><td>74230 swallowing function study. 74240 upper GI series. 74270 barium enema.</td></tr>
 <tr><td>Imaging guidance</td><td>76942 ultrasound guidance for needle placement. 77012 CT guidance. 77021 MRI guidance. 77001 fluoroscopic guidance add-on.</td></tr>
 <tr><td>Nuclear medicine</td><td>78300 limited bone imaging. 78306 whole body bone imaging. 78452 myocardial perfusion SPECT, multiple studies. 78815 PET with CT.</td></tr>
-<tr><td>Radiation oncology</td><td>77301 IMRT planning. 77385 and 77386 IMRT delivery, simple and complex. 77427 weekly radiation treatment management. 77767 brachytherapy.</td></tr>
+<tr><td>Radiation oncology</td><td>77301 IMRT planning. IMRT delivery (77385 and 77386 were deleted effective January 1, 2026, and delivery is now reported with revised treatment delivery codes, so check the current book). 77427 weekly radiation treatment management. 77767 brachytherapy.</td></tr>
 </tbody></table>
 <p><b>Key rules.</b> <b>Guidance codes</b> are reported with the procedure they support only if the procedure code does not already include guidance and the guidance is documented with a permanent record. Many modern procedure codes include imaging guidance, so reporting it again is unbundling. <b>Radiological supervision and interpretation (S&amp;I)</b> codes are separate from the interventional procedure when the procedure code does not include them. <b>Nuclear medicine</b> codes cover the radiopharmaceutical imaging, and the radiopharmaceutical itself is reported with a HCPCS A or Q code. <b>Radiation oncology</b> is a sequence of services: consultation, treatment planning and simulation, dosimetry, <b>treatment delivery</b>, weekly <b>treatment management</b>, and sometimes brachytherapy. Each component has its own code, and delivery and management codes are reported by the treatment course. The global, professional (26), and technical (TC) splits apply to most of these services.</p>`,
     steps: [
@@ -577,7 +577,7 @@ addCodingLessons([
       ],
       [
         "A patient has IMRT with a plan, simulation, delivery, and weekly management.",
-        "Report the components: planning (77301), delivery (77385 or 77386 per session), and weekly management (77427), with the other planning and dosimetry codes as documented.",
+        "Report the components: planning (77301), delivery (per session, with the delivery code in the current book), and weekly management (77427), with the other planning and dosimetry codes as documented.",
       ],
     ],
     case: "A biopsy claim lists the biopsy code and an ultrasound guidance code, but the biopsy descriptor includes imaging guidance.",
