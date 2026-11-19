@@ -3,7 +3,7 @@ const { boot } = require("./harness.cjs");
 
 const app = boot();
 const { run, get, tool } = app;
-const TOTAL = 210;
+const TOTAL = 217;
 
 // ---- Curriculum shape ----
 assert.equal(run("lessons.length"), TOTAL);
@@ -14,7 +14,7 @@ assert.deepEqual(
 );
 assert.equal(run("courses.length"), 2);
 assert.equal(run("courses[0].sections.flatMap(s => s.ids).length"), 68);
-assert.equal(run("courses[1].sections.flatMap(s => s.ids).length"), 142);
+assert.equal(run("courses[1].sections.flatMap(s => s.ids).length"), 149);
 assert.equal(run("order[48]"), 48);
 assert.equal(run("order[68]"), 54, "coding course starts after foundations");
 assert(
@@ -84,7 +84,7 @@ assert(
 );
 assert(
   run(
-    'codingLessons.length === 156 && codingLessons.every(l => l.objectives.length >= 3 && l.steps.length >= 5 && l.drills.length >= 3 && l.rubric.length >= 4 && l.remember.length === 3 && l.body.includes("model response") && l.body.includes("Core concepts"))',
+    'codingLessons.length === 163 && codingLessons.every(l => l.objectives.length >= 3 && l.steps.length >= 5 && l.drills.length >= 3 && l.rubric.length >= 4 && l.remember.length === 3 && l.body.includes("model response") && l.body.includes("Core concepts"))',
   ),
 );
 assert(
@@ -133,5 +133,5 @@ assert(get("cards").innerHTML.includes("section-toggle"));
 assert.equal(get("searchStatus").textContent, "");
 
 console.log(
-  `Verified ${TOTAL} lesson flows, 156 added lessons, reference data, flashcards, saved state, search, and invalid input.`,
+  `Verified ${TOTAL} lesson flows, 163 added lessons, reference data, flashcards, saved state, search, and invalid input.`,
 );

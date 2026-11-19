@@ -91,19 +91,19 @@ addCodingLessons([
     time: "55 min",
     objectives: [
       "Choose the diagnostic catheterization code by what was done.",
-      "Report PCI by vessel with base and add-on codes and the LC, LD, RC modifiers.",
+      "Report PCI by major coronary artery with the vessel modifiers and the 2026 code structure.",
       "Decide when diagnostic angiography can be reported with a same-day stent.",
     ],
     concept: `<p><strong>Diagnostic catheterization.</strong> 93451 is a right heart catheterization. 93452 is a left heart catheterization with left ventriculography. 93453 is a combined right and left heart catheterization. Coronary angiography is built in: 93454 is coronary angiography alone, 93455 adds bypass graft angiography, 93456 adds a right heart catheterization, and 93457 adds both. 93458 is left heart catheterization with coronary angiography, 93459 adds bypass grafts, 93460 is right and left heart catheterization with coronary angiography, and 93461 adds bypass grafts. The imaging supervision and interpretation are part of each code.</p>
-<p><strong>Percutaneous coronary intervention (PCI).</strong> 92920 is balloon angioplasty of one major coronary artery or branch, with add-on 92921 for each additional branch. 92928 is stent placement in one major coronary artery or branch, with add-on 92929 for each additional branch. 92924 and 92933 add atherectomy. 92937 is revascularization of a bypass graft. 92941 is intervention for an acute myocardial infarction in one vessel. 92943 is for a chronic total occlusion, with add-on 92944.</p>
-<p><strong>Vessel modifiers.</strong> Report the vessel treated with LC (left circumflex), LD (left anterior descending), RC (right coronary artery), LM (left main), or RI (ramus intermedius). Add-on codes carry the modifier of the vessel they treat.</p>
+<p><strong>Percutaneous coronary intervention (PCI).</strong> 92920 is balloon angioplasty of a single major coronary artery and/or its branches. 92928 is stent placement, with angioplasty when performed, in a single major coronary artery and/or its branches. 92924 and 92933 add atherectomy. 92937 is revascularization of a bypass graft. 92941 is intervention for an acute myocardial infarction, and 92943 is for a chronic total occlusion. <strong>2026 changes:</strong> the add-on codes for additional branches (92921, 92925, 92929, 92934, 92938, and 92944) were deleted effective January 1, 2026, because branches are now included in each main code. Two new codes were added: 92930 for a single major artery with two or more distinct lesions and two or more stents, or a bifurcation lesion treated in both the main artery and the side branch, and 92945 for a chronic total occlusion treated by combined antegrade and retrograde approaches. Older books and old claims still show the deleted codes, so always use the book for the date of service.</p>
+<p><strong>Vessel modifiers.</strong> Report the vessel treated with LC (left circumflex), LD (left anterior descending), RC (right coronary artery), LM (left main), or RI (ramus intermedius). When more than one major coronary artery is treated, each artery is reported with its own vessel modifier. Confirm the multiple-vessel and payment rules in the current CPT guidelines and with each payer.</p>
 <p><strong>Diagnostic angiography with PCI.</strong> The angiography is included in PCI when a prior diagnostic study is available. It can be reported separately, often with modifier 59 or an X modifier, when no prior study exists and the decision to intervene is made during the same session.</p>
 <p><strong>Diagnoses.</strong> I25.10 is atherosclerotic heart disease of a native coronary artery without angina, I20.9 is angina pectoris, unspecified, I21.11 is a ST elevation myocardial infarction involving the right coronary artery, and I27.20 is pulmonary hypertension, unspecified.</p>`,
     steps: [
       "Read the procedure note for each chamber, vessel, and graft studied.",
       "Choose the one diagnostic code that matches the full set of studies.",
       "List each vessel treated and the type of intervention.",
-      "Choose the base code for the first vessel and add-ons for others.",
+      "Choose the PCI code for each major artery, and decide whether the 2026 complex code applies.",
       "Add the vessel modifier to each line.",
       "Check whether the diagnostic study can be reported separately.",
     ],
@@ -118,7 +118,7 @@ addCodingLessons([
       ],
       [
         "Case 3. A cardiologist places one stent in the left anterior descending artery and a second stent in the right coronary artery, with a prior diagnostic study on file.",
-        "92928-LD for the first vessel and 92929-RC for the additional major artery. No diagnostic code is added.",
+        "92928-LD for the left anterior descending artery and 92928-RC for the right coronary artery, one code for each major artery with its vessel modifier. No diagnostic code is added. The deleted add-on 92929 is not used in 2026.",
       ],
       [
         "Case 4. A patient with an acute ST elevation myocardial infarction involving the right coronary artery gets a stent in that artery.",
@@ -134,7 +134,7 @@ addCodingLessons([
       "When a prior diagnostic study is available, the angiography is included in the PCI and is not reported again. Remove 93458 and keep 92928-LD, and keep the date of the earlier study in the note.",
     mistakes: [
       "Reporting angiography separately when a prior study exists.",
-      "Using a base code for each additional vessel.",
+      "Using a deleted branch add-on code from an older book.",
       "Leaving off the vessel modifier.",
       "Reporting a lower-numbered diagnostic code than what was done.",
     ],
@@ -145,27 +145,27 @@ addCodingLessons([
     ],
     rubric: [
       "The diagnostic code matches the studies done.",
-      "PCI uses base and add-on codes by vessel.",
+      "PCI is reported by major artery with vessel modifiers and no deleted add-ons.",
       "Vessel modifiers are on each line.",
       "Same-day diagnostic reporting follows the rule.",
     ],
     scenario:
-      "A cardiologist places two stents in different major coronary arteries. How are they reported?",
+      "A cardiologist places one stent in each of two different major coronary arteries in 2026. How are they reported?",
     answers: [
-      "92928 for the first artery and 92929 for the second",
-      "92928 twice, once for each of the two arteries",
-      "92929 twice, one for each artery stented",
+      "92928 for each artery, with a vessel modifier on each",
+      "92928 once plus the add-on 92929 for the second",
+      "92930 once, because two stents were placed in total",
     ],
     correct: 0,
-    why: "The first vessel uses the base code and each additional major artery or branch uses the add-on code.",
+    why: "Branch add-on codes were deleted for 2026, 92930 is for multiple lesions in one major artery, and each major artery is reported with its own vessel modifier.",
     taglish:
-      "Sa cardiac cath, piliin ang isang diagnostic code ayon sa lahat ng ginawa: 93458 para sa left heart cath na may coronary angiography. Sa stent, 92928 ang una at 92929 sa bawat dagdag na ugat, at lagyan ng modifier LC, LD, o RC ayon sa ugat. Kung may nauna nang diagnostic study, kasama na ang angiography sa PCI. Kung wala pa at napagpasyahan sa parehong session, pwedeng hiwalay na may 59 o X modifier.",
+      "Sa cardiac cath, piliin ang isang diagnostic code ayon sa lahat ng ginawa: 93458 para sa left heart cath na may coronary angiography. Sa stent, 92928 para sa bawat pangunahing ugat na may modifier LC, LD, o RC, at ang mga add-on tulad ng 92929 ay na-delete noong 2026. May bagong 92930 para sa maraming lesion o bifurcation sa isang ugat. Kung may nauna nang diagnostic study, kasama na ang angiography sa PCI. Kung wala pa at napagpasyahan sa parehong session, pwedeng hiwalay na may 59 o X modifier.",
     tip: "Draw the heart on a scrap of paper and mark each vessel the note names. The picture gives you the modifiers and the add-ons in seconds.",
     mentor:
       "Ask a cardiology coder to walk you through one cath report and the claim lines it produced.",
     remember: [
       "One combined diagnostic code covers all the chambers and vessels studied.",
-      "PCI uses a base code for the first vessel and add-on codes for others, with LC, LD, or RC.",
+      "PCI is reported by major artery with LC, LD, or RC, and the branch add-on codes 92921 and 92929 were deleted in 2026.",
       "Diagnostic angiography is separate only when no prior study exists and the decision to intervene was made that day.",
     ],
   },

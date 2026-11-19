@@ -137,7 +137,7 @@ const courses = [
         note: "Code visits, procedures, drugs, and services, then combine them into a clean encounter.",
         ids: [
           65, 66, 67, 68, 69, 70, 71, 72, 73, 126, 127, 141, 142, 173, 179, 180,
-          186, 192, 206, 207,
+          186, 192, 206, 207, 215,
         ],
       },
       {
@@ -155,7 +155,7 @@ const courses = [
         note: "Apply the rules to hospital, skin, orthopedic, behavioral health, obstetric, and anesthesia services, and read an operative report.",
         ids: [
           90, 91, 92, 93, 94, 95, 96, 109, 110, 111, 189, 190, 191, 195, 196,
-          197, 198, 199,
+          210, 211, 212, 213, 214, 197, 198, 199,
         ],
       },
       {
@@ -181,6 +181,7 @@ const courses = [
         note: "Timed practice with answers and reasoning for diagnosis coding, procedure coding, and the back end of the claim.",
         ids: [
           99, 100, 101, 118, 130, 131, 168, 169, 182, 183, 188, 194, 202, 209,
+          216,
         ],
       },
       {
